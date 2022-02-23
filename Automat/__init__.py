@@ -35,6 +35,23 @@ def auswahlBearbeiten(wahlDesTrinks):
         zuZahlen = zuZahlen + preisMilch + preisHeiß
         return zuZahlen
 
+def bezahlvorgang(zuZahlen):
+    '''
+    Bezahlfunktion - Eingabe der entsprechenden Münzen
+    '''
+    print("Erlaubte Münzen: 50 Cent; 1 Euro; 2Euro")
+    muenzeinwurf = 0.0
+    while muenzeinwurf < zuZahlen:
+        differenz = zuZahlen - muenzeinwurf
+        muenzeinwurf = muenzeinwurf + float(input("Bitte werfen Sie den zu zahlenden Betrag in höhe von %.1f Euro ein: " %differenz))
+
+
+    if muenzeinwurf > zuZahlen:
+        rueckgeld = muenzeinwurf - zuZahlen
+    else:
+        rueckgeld = 0
+    print("Sie bekommen %.1f Euro zurück!" %rueckgeld)
+
 
 def kaffeeautomat():
     '''
@@ -55,8 +72,9 @@ def kaffeeautomat():
         wahlDesTrinks = input('Auswahl eingeben: ')
         wahlDesTrinks = as_int(wahlDesTrinks)
         zuBezahlen = auswahlBearbeiten(wahlDesTrinks)
+        print(zuBezahlen)
 
-
+        bezahlvorgang(zuBezahlen)
 
 
 
