@@ -7,9 +7,13 @@ class Espresso:
     int _menge
     '''
     def __init__(self):
+        self.__name ='Espresso'
         self._zutatEspresso = 'Espresso'
         self.__preis = 1
         self._menge = 1
+
+    def getName(self):
+        return self.__name
 
     def getPreisEspresso(self):
         return self.__preis
@@ -29,9 +33,13 @@ class EspressoMacchiato:
     int _mengeMilchschaum
     '''
     def __init__(self):
+        self.__name = 'Espresso Macchiato'
         self._zutatMilchschaum = 'Milchschaum'
         self.__preisMilchschaum = 1
         self._mengeMilchschaum = 0.5
+
+    def getName(self):
+        return self.__name
 
     def getPreisMilchschaum(self):
         return self.__preisMilchschaum
@@ -56,12 +64,16 @@ class Cappuccino():
     '''
 
     def __init__(self):
+        self.__name = 'Cappuccino'
         self._zutatMilchschaum = 'Milchschaum'
         self.__preisMilchschaum = 0.5
         self._mengeMilchschaum = 2
         self._zutatHeißeMilch = 'HeißeMilch'
         self.__preisHeißeMilch = 1
         self._mengeHeißeMilch = 1
+
+    def getName(self):
+        return self.__name
 
     def getPreisMilchschaum1(self):
         return self.__preisMilchschaum
@@ -94,12 +106,16 @@ class CafeLatte():
     '''
 
     def __init__(self):
+        self.__name = 'CafeLatte'
         self._zutatMilchschaum = 'Milchschaum'
         self.__preisMilchschaum = 0.5
         self._mengeMilchschaum = 1
         self._zutatHeißeMilch = 'HeißeMilch'
         self.__preisHeißeMilch = 1
         self._mengeHeißeMilch = 2
+
+    def getName(self):
+        return self.__name
 
     def getPreisMilchschaum2(self):
         return self.__preisMilchschaum

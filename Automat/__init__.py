@@ -1,4 +1,5 @@
 from kaffees import *
+import time
 def as_int(number):
     try:
         return int(number)
@@ -11,13 +12,13 @@ def auswahlBearbeiten(wahlDesTrinks):
     if wahlDesTrinks == 1:
         espresso = Espresso()
         zuZahlen = zuZahlen + (espresso.getPreisEspresso() * espresso.getMengeEspresso())
-        return zuZahlen
+        kaffeeAngaben = [zuZahlen,espresso.getName() ]
     elif wahlDesTrinks == 2:
         espresso = Espresso()
         zuZahlen = zuZahlen + (espresso.getPreisEspresso() * espresso.getMengeEspresso())
         espressoMacchiato = EspressoMacchiato()
         zuZahlen = zuZahlen + (espressoMacchiato.getPreisMilchschaum() * espressoMacchiato.getMengeMilchschaum())
-        return zuZahlen
+        kaffeeAngaben = [zuZahlen,espressoMacchiato.getName() ]
     elif wahlDesTrinks == 3:
         espresso = Espresso()
         zuZahlen = zuZahlen + (espresso.getPreisEspresso() * espresso.getMengeEspresso())
@@ -25,7 +26,7 @@ def auswahlBearbeiten(wahlDesTrinks):
         preisMilch = cappuccino.getPreisMilchschaum1() * cappuccino.getMengeMilchschaum1()
         preisHeiß = cappuccino.getPreisHeißeMilch1() * cappuccino.getMengeHeißeMilch1()
         zuZahlen = zuZahlen + preisMilch + preisHeiß
-        return zuZahlen
+        kaffeeAngaben = [zuZahlen,cappuccino.getName() ]
     else:
         espresso = Espresso()
         zuZahlen = zuZahlen + (espresso.getPreisEspresso() * espresso.getMengeEspresso())
@@ -33,7 +34,8 @@ def auswahlBearbeiten(wahlDesTrinks):
         preisMilch = cafeLatte.getPreisMilchschaum2() * cafeLatte.getMengeMilchschaum2()
         preisHeiß = cafeLatte.getPreisHeißeMilch2() * cafeLatte.getMengeHeißeMilch2()
         zuZahlen = zuZahlen + preisMilch + preisHeiß
-        return zuZahlen
+        kaffeeAngaben = [zuZahlen,cafeLatte.getName() ]
+    return kaffeeAngaben
 
 def bezahlvorgang(zuZahlen):
     '''
@@ -66,17 +68,18 @@ def kaffeeautomat():
         print('Guten Tag Geniezer')
         print('Was Möchten Sie drinken?')
         print('1: Espresso')
-        print('2: Espresso macchiato:')
+        print('2: Espresso macchiato')
         print('3: Cappuccino')
-        print('4: Café Latte: ')
+        print('4: Café Latte ')
         wahlDesTrinks = input('Auswahl eingeben: ')
         wahlDesTrinks = as_int(wahlDesTrinks)
-        zuBezahlen = auswahlBearbeiten(wahlDesTrinks)
-        print(zuBezahlen)
+        zuBezahlen = [auswahlBearbeiten(wahlDesTrinks)]
 
-        bezahlvorgang(zuBezahlen)
+        bezahlvorgang(zuBezahlen[0][0])
 
-
+        
+        print('Hier kommt ihr {}'.format(zuBezahlen[0][1]))
+        time.sleep(2)
 
         #Abfrage ob kaffeautomat() weiter laufen soll
         reRun = input('Soll ich an bleiben? j/n: ')
@@ -87,8 +90,6 @@ def kaffeeautomat():
                 run = False
         except ValueError:
             run = False
-
-
 
 
 
