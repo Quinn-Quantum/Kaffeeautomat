@@ -11,7 +11,7 @@ class Espresso:
         self.__preis = 1
         self._menge = 1
 
-    def getPreis(self):
+    def getPreisEspresso(self):
         return self.__preis
 
     def getZutatEspresso(self):
@@ -20,7 +20,7 @@ class Espresso:
     def getMengeEspresso(self):
         return self._menge
 
-class EspressoMacchiato(Espresso):
+class EspressoMacchiato:
     '''
     Erstellt die Classe EspressoMacchiato
     Variabln:
@@ -30,7 +30,7 @@ class EspressoMacchiato(Espresso):
     '''
     def __init__(self):
         self._zutatMilchschaum = 'Milchschaum'
-        self.__preisMilchschaums = 1
+        self.__preisMilchschaum = 1
         self._mengeMilchschaum = 0.5
 
     def getPreisMilchschaum(self):
@@ -43,7 +43,7 @@ class EspressoMacchiato(Espresso):
         return self._mengeMilchschaum
 
 
-class Cappuccino(Espresso):
+class Cappuccino():
     '''
     Erstellt die Classe Cappuccino
     Variabln:
@@ -57,31 +57,31 @@ class Cappuccino(Espresso):
 
     def __init__(self):
         self._zutatMilchschaum = 'Milchschaum'
-        self.__preisMilchschaums = 0.5
+        self.__preisMilchschaum = 0.5
         self._mengeMilchschaum = 2
         self._zutatHeißeMilch = 'HeißeMilch'
         self.__preisHeißeMilch = 1
         self._mengeHeißeMilch = 1
 
-    def getPreisMilchschaum(self):
+    def getPreisMilchschaum1(self):
         return self.__preisMilchschaum
 
-    def getZutatMilchschaum(self):
+    def getZutatMilchschaum1(self):
         return self._zutatMilchschaum
 
-    def getMengeMilchschaum(self):
+    def getMengeMilchschaum1(self):
         return self._mengeMilchschaum
 
-    def getPreisHeißeMilch(self):
+    def getPreisHeißeMilch1(self):
         return self.__preisHeißeMilch
 
-    def getZutatHeißeMilch(self):
+    def getZutatHeißeMilch1(self):
         return self._zutatHeißeMilch
-    
-    def getMengeHeißeMilch(self):
+
+    def getMengeHeißeMilch1(self):
         return self._mengeHeißeMilch
 
-class CafeLatte(Espresso):
+class CafeLatte():
     '''
     Erstellt die Classe CafeLatte
     Variabln:
@@ -95,26 +95,26 @@ class CafeLatte(Espresso):
 
     def __init__(self):
         self._zutatMilchschaum = 'Milchschaum'
-        self.__preisMilchschaums = 0.5
+        self.__preisMilchschaum = 0.5
         self._mengeMilchschaum = 1
         self._zutatHeißeMilch = 'HeißeMilch'
         self.__preisHeißeMilch = 1
         self._mengeHeißeMilch = 2
 
-    def getPreisMilchschaum(self):
+    def getPreisMilchschaum2(self):
         return self.__preisMilchschaum
 
-    def getZutatMilchschaum(self):
+    def getZutatMilchschaum2(self):
         return self._zutatMilchschaum
 
-    def getMengeMilchschaum(self):
+    def getMengeMilchschaum2(self):
         return self._mengeMilchschaum
 
-    def getPreisHeißeMilch(self):
+    def getPreisHeißeMilch2(self):
         return self.__preisHeißeMilch
 
-    def getZutatHeißeMilch(self):
+    def getZutatHeißeMilch2(self):
         return self._zutatHeißeMilch
 
-    def getMengeHeißeMilch(self):
+    def getMengeHeißeMilch2(self):
         return self._mengeHeißeMilch
