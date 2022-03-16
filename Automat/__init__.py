@@ -11,32 +11,47 @@ def as_int(number):
         pass
     return None
 
-def auswahlBearbeiten(wahlDesTrinks):
+def auswahlBearbeiten(wahlDesTrinks, bestand):
     zuZahlen = 0.5
     if wahlDesTrinks == 1:
         espresso =Espresso()
         zuZahlen = zuZahlen + (espresso.getPreisEspresso() * espresso.getMengeEspresso())
+        bestand.setBEspresso(bestand.getBEspresso() - espresso.getMengeEspresso())
         kaffeeAngaben = [zuZahlen,espresso.getName()]
+
     elif wahlDesTrinks == 2:
         espresso = Espresso()
         zuZahlen = zuZahlen + (espresso.getPreisEspresso() * espresso.getMengeEspresso())
+        bestand.setBEspresso(bestand.getBEspresso() - espresso.getMengeEspresso())
+
         espressoMacchiato = EspressoMacchiato()
         zuZahlen = zuZahlen + (espressoMacchiato.getPreisMilchschaum() * espressoMacchiato.getMengeMilchschaum())
-        kaffeeAngaben = [zuZahlen,espressoMacchiato.getName() ]
+        bestand.setBMilchschaum(bestand.getBMilchschaum() - espressoMacchiato.getMengeMilchschaum())
+        kaffeeAngaben = [zuZahlen,espressoMacchiato.getName()]
+
     elif wahlDesTrinks == 3:
         espresso = Espresso()
         zuZahlen = zuZahlen + (espresso.getPreisEspresso() * espresso.getMengeEspresso())
+        bestand.setBEspresso(bestand.getBEspresso() - espresso.getMengeEspresso())
+
         cappuccino = Cappuccino()
         preisMilch = cappuccino.getPreisMilchschaum1() * cappuccino.getMengeMilchschaum1()
+        bestand.setBMilchschaum(bestand.getBMilchschaum() - cappuccino.getMengeMilchschaum1())
+
         preisHeiß = cappuccino.getPreisHeißeMilch1() * cappuccino.getMengeHeißeMilch1()
+        bestand.setBHeißeMilch(bestand.getBHeißeMilch()- cappuccino.getMengeHeißeMilch1())
         zuZahlen = zuZahlen + preisMilch + preisHeiß
         kaffeeAngaben = [zuZahlen,cappuccino.getName() ]
     else:
         espresso = Espresso()
         zuZahlen = zuZahlen + (espresso.getPreisEspresso() * espresso.getMengeEspresso())
+        bestand.setBEspresso(bestand.getBEspresso() - espresso.getMengeEspresso())
+
         cafeLatte = CafeLatte()
         preisMilch = cafeLatte.getPreisMilchschaum2() * cafeLatte.getMengeMilchschaum2()
+        bestand.setBMilchschaum(bestand.getBMilchschaum() - cafeLatte.getMengeMilchschaum2())
         preisHeiß = cafeLatte.getPreisHeißeMilch2() * cafeLatte.getMengeHeißeMilch2()
+        bestand.setBHeißeMilch(bestand.getBHeißeMilch() - cafeLatte.getMengeHeißeMilch2())
         zuZahlen = zuZahlen + preisMilch + preisHeiß
         kaffeeAngaben = [zuZahlen,cafeLatte.getName() ]
     return kaffeeAngaben
@@ -90,7 +105,7 @@ def refill(bestand):
             heißeMilchB = heißeMilchB + nachfüllen
             bestand.setBHeißeMilch(heißeMilchB)
         else:
-            if espressoB > 0 and milchschaumB > 0 and heißeMilchB > 0 :
+            if espressoB >= 2 and milchschaumB >= 2 and heißeMilchB >= 2 :
                 print("sie sind fertig mit befüllen.")
                 befüllen = False
             else:
@@ -120,15 +135,21 @@ def kaffeeautomat():
         print('2: Espresso macchiato')
         print('3: Cappuccino')
         print('4: Café Latte ')
+        print('5: Bestand')
         wahlDesTrinks = input('Auswahl eingeben: ')
         wahlDesTrinks = as_int(wahlDesTrinks)
-        zuBezahlen = [auswahlBearbeiten(wahlDesTrinks)]
 
-        bezahlvorgang(zuBezahlen[0][0])
+        if wahlDesTrinks == 5:
+           print("Espresso Bestand:",bestand.getBEspresso())
+        else:
+            #Bezahlen und Bestand anpassen
+            zuBezahlen = [auswahlBearbeiten(wahlDesTrinks, bestand)]
+            bezahlvorgang(zuBezahlen[0][0])
 
-        
-        print('Hier kommt ihr {}'.format(zuBezahlen[0][1]))
-        time.sleep(2)
+
+            print('Hier kommt ihr {}'.format(zuBezahlen[0][1]))
+            time.sleep(2)
+
 
         #Abfrage ob kaffeautomat() weiter laufen soll
         reRun = input('Soll ich an bleiben? j/n: ')
