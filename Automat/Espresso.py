@@ -1,7 +1,7 @@
 class Espresso:
     '''
-    Erstellt die Classe Espresso
-    Variabln:
+    Erstellt die Klasse Espresso
+    Variablen:
     String _zutatEspresso
     floate __preis
     int _menge

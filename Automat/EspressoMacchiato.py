@@ -1,7 +1,7 @@
 class EspressoMacchiato:
     '''
-    Erstellt die Classe EspressoMacchiato
-    Variabln:
+    Erstellt die Klasse EspressoMacchiato
+    Variablen:
     String _zutatMilchschaum
     floate __preisMilchschaum
     int _mengeMilchschaum

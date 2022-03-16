@@ -60,7 +60,7 @@ def bezahlvorgang(zuZahlen):
     '''
     Bezahlfunktion - Eingabe der entsprechenden Münzen
     '''
-    print("Erlaubte Münzen: 50 Cent; 1 Euro; 2Euro und 5€")
+    print("Erlaubte Münzen: 50 Cent; 1 Euro; 2 Euro; 5 Euro")
     muenzeinwurf = 0.0
     while muenzeinwurf < zuZahlen:
         einwurf = 0.0
@@ -69,7 +69,7 @@ def bezahlvorgang(zuZahlen):
         if einwurf == 0.5 or einwurf == 1.0 or einwurf == 2.0 or einwurf == 5.0:
             muenzeinwurf = muenzeinwurf + einwurf
         else:
-            print(einwurf, "zu rück")
+            print(einwurf, "zurück - ungültiger Betrag!")
             einwurf = 0.0
             muenzeinwurf = muenzeinwurf + einwurf
 
@@ -87,13 +87,13 @@ def refill(bestand):
         heißeMilchB = bestand.getBHeißeMilch()
         print("Bestand der Zutaten")
         print("Espresso: %d "  %espressoB)
-        print("milchschaum: %d " %milchschaumB)
-        print("heiße Milch: %d " %heißeMilchB)
+        print("Milchschaum: %d " %milchschaumB)
+        print("Heiße Milch: %d " %heißeMilchB)
         print("Was möchten Sie auffüllen?")
         print("Espresso: 1 " )
-        print("milchschaum: 2 ")
-        print("heiße Milch: 3 ")
-        print("exit: 4")
+        print("Milchschaum: 2 ")
+        print("Heiße Milch: 3 ")
+        print("Exit: 4")
         eingabe = input('Auswahl eingeben: ')
         eingabe =as_int(eingabe)
         if eingabe == 1:
@@ -113,10 +113,10 @@ def refill(bestand):
             bestand.setBHeißeMilch(heißeMilchB)
         else:
             if espressoB >= 2 and milchschaumB >= 2 and heißeMilchB >= 2 :
-                print("sie sind fertig mit befüllen.")
+                print("Auffüllen abgeschlossen.")
                 befüllen = False
             else:
-                print("sie sind noch nicht fertig mit befüllen.")
+                print("Auffüllen noch nicht abgeschlossen.")
 
 
     return bestand
@@ -127,19 +127,19 @@ def kaffeeautomat():
     #Start Befüllung
     bestand=refill(bestand)
     '''
-    Start funktion
+    Startfunktion
     Logik:
-        Abfrage was Kunde drinken möchte
+        Abfrage was Kunde trinken möchte
         Abrechnung
-        verarbeitung der auswahl
-        Bestand neu kalkulation
+        Verarbeitung der auswahl
+        Bestand Neukalkulation
     '''
     run = True
     while run:
-        print('Guten Tag Geniezer')
-        print('Was Möchten Sie drinken?')
+        print('Guten Tag Genießer')
+        print('Was Möchten Sie trinken?')
         print('1: Espresso')
-        print('2: Espresso macchiato')
+        print('2: Espresso Macchiato')
         print('3: Cappuccino')
         print('4: Café Latte ')
         print('5: Bestand')
@@ -147,9 +147,9 @@ def kaffeeautomat():
         wahlDesTrinks = as_int(wahlDesTrinks)
 
         if wahlDesTrinks == 5:
-           print("Espresso Bestand:",bestand.getBEspresso())
-           print("Milchschaum Bestand:", bestand.getBMilchschaum())
-           print("heiße Milch Bestand:", bestand.getBHeißeMilch())
+           print("Espresso Bestand: ",bestand.getBEspresso())
+           print("Milchschaum Bestand: ", bestand.getBMilchschaum())
+           print("Heiße Milch Bestand: ", bestand.getBHeißeMilch())
         else:
             #Bezahlen und Bestand anpassen
             zuBezahlen = [auswahlBearbeiten(wahlDesTrinks, bestand)]
@@ -164,7 +164,7 @@ def kaffeeautomat():
             bestand = refill(bestand)
 
         #Abfrage ob kaffeautomat() weiter laufen soll
-        reRun = input('Soll ich an bleiben? j/n: ')
+        reRun = input('Soll ich anbleiben? j/n: ')
         try:
             if str(reRun) == 'j':
                 run=True
