@@ -1,4 +1,5 @@
 # Kaffeeautomat
+ 
+Beim Start muss der automt erst befüllt werden.
 
-Bestand hinzu fügen,
-Diagramm OOP,
+All Getränke sind in extra Classen.

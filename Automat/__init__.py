@@ -60,13 +60,13 @@ def bezahlvorgang(zuZahlen):
     '''
     Bezahlfunktion - Eingabe der entsprechenden Münzen
     '''
-    print("Erlaubte Münzen: 50 Cent; 1 Euro; 2 Euro; 5 Euro")
+    print("Erlaubte Münzen: 50 Cent; 1 Euro; 2 Euro.")
     muenzeinwurf = 0.0
     while muenzeinwurf < zuZahlen:
         einwurf = 0.0
         differenz = zuZahlen - muenzeinwurf
         einwurf = float(input("Bitte werfen Sie den zu zahlenden Betrag in höhe von %.1f Euro ein: " % differenz))
-        if einwurf == 0.5 or einwurf == 1.0 or einwurf == 2.0 or einwurf == 5.0:
+        if einwurf == 0.5 or einwurf == 1.0 or einwurf == 2.0:
             muenzeinwurf = muenzeinwurf + einwurf
         else:
             print(einwurf, "zurück - ungültiger Betrag!")
