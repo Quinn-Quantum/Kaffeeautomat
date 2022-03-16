@@ -60,18 +60,25 @@ def bezahlvorgang(zuZahlen):
     '''
     Bezahlfunktion - Eingabe der entsprechenden Münzen
     '''
-    print("Erlaubte Münzen: 50 Cent; 1 Euro; 2Euro")
+    print("Erlaubte Münzen: 50 Cent; 1 Euro; 2Euro und 5€")
     muenzeinwurf = 0.0
     while muenzeinwurf < zuZahlen:
+        einwurf = 0.0
         differenz = zuZahlen - muenzeinwurf
-        muenzeinwurf = muenzeinwurf + float(input("Bitte werfen Sie den zu zahlenden Betrag in höhe von %.1f Euro ein: " %differenz))
-
+        einwurf = float(input("Bitte werfen Sie den zu zahlenden Betrag in höhe von %.1f Euro ein: " % differenz))
+        if einwurf == 0.5 or einwurf == 1.0 or einwurf == 2.0 or einwurf == 5.0:
+            muenzeinwurf = muenzeinwurf + einwurf
+        else:
+            print(einwurf, "zu rück")
+            einwurf = 0.0
+            muenzeinwurf = muenzeinwurf + einwurf
 
     if muenzeinwurf > zuZahlen:
         rueckgeld = muenzeinwurf - zuZahlen
     else:
         rueckgeld = 0
     print("Sie bekommen %.1f Euro zurück!" %rueckgeld)
+
 def refill(bestand):
     befüllen = True
     while befüllen:
@@ -141,6 +148,8 @@ def kaffeeautomat():
 
         if wahlDesTrinks == 5:
            print("Espresso Bestand:",bestand.getBEspresso())
+           print("Milchschaum Bestand:", bestand.getBMilchschaum())
+           print("heiße Milch Bestand:", bestand.getBHeißeMilch())
         else:
             #Bezahlen und Bestand anpassen
             zuBezahlen = [auswahlBearbeiten(wahlDesTrinks, bestand)]
@@ -150,6 +159,9 @@ def kaffeeautomat():
             print('Hier kommt ihr {}'.format(zuBezahlen[0][1]))
             time.sleep(2)
 
+        #Bestand überprüfen
+        if bestand.getBEspresso()< 2 and bestand.getBMilchschaum() < 2 and bestand.getBHeißeMilch() < 2:
+            bestand = refill(bestand)
 
         #Abfrage ob kaffeautomat() weiter laufen soll
         reRun = input('Soll ich an bleiben? j/n: ')
