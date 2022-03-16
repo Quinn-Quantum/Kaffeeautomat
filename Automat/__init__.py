@@ -90,7 +90,12 @@ def refill(bestand):
             heißeMilchB = heißeMilchB + nachfüllen
             bestand.setBHeißeMilch(heißeMilchB)
         else:
-            befüllen = False
+            if espressoB > 0 and milchschaumB > 0 and heißeMilchB > 0 :
+                print("sie sind fertig mit befüllen.")
+                befüllen = False
+            else:
+                print("sie sind noch nicht fertig mit befüllen.")
+
 
     return bestand
 
