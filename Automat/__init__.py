@@ -1,4 +1,7 @@
-from kaffees import *
+from CafeLatte import *
+from Cappuccino import *
+from Espresso import *
+from EspressoMacchiato import *
 import time
 def as_int(number):
     try:
@@ -10,9 +13,9 @@ def as_int(number):
 def auswahlBearbeiten(wahlDesTrinks):
     zuZahlen = 0.5
     if wahlDesTrinks == 1:
-        espresso = Espresso()
+        espresso =Espresso()
         zuZahlen = zuZahlen + (espresso.getPreisEspresso() * espresso.getMengeEspresso())
-        kaffeeAngaben = [zuZahlen,espresso.getName() ]
+        kaffeeAngaben = [zuZahlen,espresso.getName()]
     elif wahlDesTrinks == 2:
         espresso = Espresso()
         zuZahlen = zuZahlen + (espresso.getPreisEspresso() * espresso.getMengeEspresso())
