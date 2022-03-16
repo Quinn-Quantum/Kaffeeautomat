@@ -2,6 +2,7 @@ from CafeLatte import *
 from Cappuccino import *
 from Espresso import *
 from EspressoMacchiato import *
+from Bestand import *
 import time
 def as_int(number):
     try:
@@ -56,15 +57,55 @@ def bezahlvorgang(zuZahlen):
     else:
         rueckgeld = 0
     print("Sie bekommen %.1f Euro zurück!" %rueckgeld)
+def refill(bestand):
+    befüllen = True
+    while befüllen:
+        espressoB = bestand.getBEspresso()
+        milchschaumB = bestand.getBMilchschaum()
+        heißeMilchB = bestand.getBHeißeMilch()
+        print("Bestand der Zutaten")
+        print("Espresso: %d "  %espressoB)
+        print("milchschaum: %d " %milchschaumB)
+        print("heiße Milch: %d " %heißeMilchB)
+        print("Was möchten Sie auffüllen?")
+        print("Espresso: 1 " )
+        print("milchschaum: 2 ")
+        print("heiße Milch: 3 ")
+        print("exit: 4")
+        eingabe = input('Auswahl eingeben: ')
+        eingabe =as_int(eingabe)
+        if eingabe == 1:
+            nachfüllen = input("Wie viel Espresso möchten Sie nachfüllen? ")
+            nachfüllen = as_int(nachfüllen)
+            espressoB = espressoB + nachfüllen
+            bestand.setBEspresso(espressoB)
+        elif eingabe == 2:
+            nachfüllen = input("Wie viel Milchschaum möchten Sie nachfüllen? ")
+            nachfüllen = as_int(nachfüllen)
+            milchschaumB = milchschaumB + nachfüllen
+            bestand.setBMilchschaum(milchschaumB)
+        elif eingabe == 3:
+            nachfüllen = input("Wie viel heiße Milch möchten Sie nachfüllen? ")
+            nachfüllen = as_int(nachfüllen)
+            heißeMilchB = heißeMilchB + nachfüllen
+            bestand.setBHeißeMilch(heißeMilchB)
+        else:
+            befüllen = False
+
+    return bestand
 
 
 def kaffeeautomat():
+    bestand = Bestand()
+    #Start Befüllung
+    bestand=refill(bestand)
     '''
     Start funktion
     Logik:
         Abfrage was Kunde drinken möchte
         Abrechnung
         verarbeitung der auswahl
+        Bestand neu kalkulation
     '''
     run = True
     while run:
