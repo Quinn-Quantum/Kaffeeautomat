@@ -4,6 +4,7 @@ from Espresso import *
 from EspressoMacchiato import *
 from Bestand import *
 import time
+#Funktion überprüft ob eine Variable ein Integer ist
 def as_int(number):
     try:
         return int(number)
@@ -15,9 +16,9 @@ def auswahlBearbeiten(wahlDesTrinks, bestand):
     zuZahlen = 0.5
     if wahlDesTrinks == 1:
         espresso =Espresso()
-        zuZahlen = zuZahlen + (espresso.getPreisEspresso() * espresso.getMengeEspresso())
-        bestand.setBEspresso(bestand.getBEspresso() - espresso.getMengeEspresso())
-        kaffeeAngaben = [zuZahlen,espresso.getName()]
+        zuZahlen = zuZahlen + (espresso.getPreisEspresso() * espresso.getMengeEspresso()) #Berechnung für den Getränkepreis
+        bestand.setBEspresso(bestand.getBEspresso() - espresso.getMengeEspresso()) #reduziert den Bestand der Zutat im Automaten
+        kaffeeAngaben = [zuZahlen,espresso.getName()] #Liste[Preis des Getränkes, Name des Getränkes]
 
     elif wahlDesTrinks == 2:
         espresso = Espresso()
@@ -78,7 +79,7 @@ def bezahlvorgang(zuZahlen):
     else:
         rueckgeld = 0
     print("Sie bekommen %.1f Euro zurück!" %rueckgeld)
-
+#Automat wird mit Zutaten befüllt
 def refill(bestand):
     befüllen = True
     while befüllen:
@@ -118,7 +119,7 @@ def refill(bestand):
             else:
                 print("Auffüllen noch nicht abgeschlossen.")
 
-
+    #Objekt bestand wird zurückgegeben
     return bestand
 
 
