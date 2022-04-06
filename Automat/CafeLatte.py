@@ -12,12 +12,12 @@ class CafeLatte():
 
     def __init__(self):
         self.__name = 'CafeLatte'
-        self._zutatMilchschaum = 'Milchschaum'
+        self.__zutatMilchschaum = 'Milchschaum'
         self.__preisMilchschaum = 0.5
-        self._mengeMilchschaum = 1
-        self._zutatHeißeMilch = 'HeißeMilch'
+        self.__mengeMilchschaum = 1
+        self.__zutatHeißeMilch = 'HeißeMilch'
         self.__preisHeißeMilch = 1
-        self._mengeHeißeMilch = 2
+        self.__mengeHeißeMilch = 2
 
     def getName(self):
         return self.__name
@@ -26,16 +26,16 @@ class CafeLatte():
         return self.__preisMilchschaum
 
     def getZutatMilchschaum2(self):
-        return self._zutatMilchschaum
+        return self.__zutatMilchschaum
 
     def getMengeMilchschaum2(self):
-        return self._mengeMilchschaum
+        return self.__mengeMilchschaum
 
     def getPreisHeißeMilch2(self):
         return self.__preisHeißeMilch
 
     def getZutatHeißeMilch2(self):
-        return self._zutatHeißeMilch
+        return self.__zutatHeißeMilch
 
     def getMengeHeißeMilch2(self):
-        return self._mengeHeißeMilch
+        return self.__mengeHeißeMilch
