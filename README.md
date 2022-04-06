@@ -1,5 +1,5 @@
 # Kaffeeautomat
  
-Beim Start muss der automt erst befüllt werden.
+Beim Start muss der Automat erst befüllt werden.
 
-All Getränke sind in extra Classen.
+Alle Getränke sind in extra Class.
