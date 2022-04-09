@@ -8,9 +8,9 @@ class Espresso:
     '''
     def __init__(self):
         self.__name ='Espresso'
-        self._zutatEspresso = 'Espresso'
+        self.__zutatEspresso = 'Espresso'
         self.__preis = 1
-        self._menge = 1
+        self.__menge = 1
 
     def getName(self):
         return self.__name
@@ -19,7 +19,7 @@ class Espresso:
         return self.__preis
 
     def getZutatEspresso(self):
-        return self._zutatEspresso
+        return self.__zutatEspresso
 
     def getMengeEspresso(self):
-        return self._menge
+        return self.__menge

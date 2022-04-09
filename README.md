@@ -1,5 +1,6 @@
 # Kaffeeautomat
  
+<<<<<<< HEAD
 ## Class
 - main
   - Funktionen
@@ -21,3 +22,8 @@
 
 ## DB
 - Liste an Getränken mit Gesamtpreis
+=======
+Beim Start muss der Automat erst befüllt werden.
+
+Alle Getränke sind in extra Class.
+>>>>>>> 3cbc801855ce4963a46101fb9b25a8739a7e0a76

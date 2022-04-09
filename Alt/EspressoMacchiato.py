@@ -8,7 +8,7 @@ class EspressoMacchiato:
     '''
     def __init__(self):
         self.__name = 'Espresso Macchiato'
-        self._zutatMilchschaum = 'Milchschaum'
+        self.__zutatMilchschaum = 'Milchschaum'
         self.__preisMilchschaum = 0.5
         self._mengeMilchschaum = 1
 
@@ -19,7 +19,7 @@ class EspressoMacchiato:
         return self.__preisMilchschaum
 
     def getZutatMilchschaum(self):
-        return self._zutatMilchschaum
+        return self.__zutatMilchschaum
 
     def getMengeMilchschaum(self):
-        return self._mengeMilchschaum
+        return self.__mengeMilchschaum
