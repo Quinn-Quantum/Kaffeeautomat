@@ -2,28 +2,24 @@
  
 <<<<<<< HEAD
 ## Class
-- main
+- main 
   - Funktionen
-    - Zahlen
-    - hinzufügen von Rezepten
-- Getränke
+    - Zahlen - Steaffen
+    - hinzufügen von Rezepten -Maria
+- Getränke - Steffen
   - Variablen
     - zutaten 1-4
     - gesamtpreis
     - name
-- Bestand
+- Bestand - Steffen
   - Zutaten
   - Menge
--GUI
+- GUI - Maria
     - Buttens für Getränke
     - Button für Einstelungen
       - Zutaten auffüllen
       - Rezept hinzufügen
 
-## DB
+## DB - Maria
 - Liste an Getränken mit Gesamtpreis
-=======
-Beim Start muss der Automat erst befüllt werden.
 
-Alle Getränke sind in extra Class.
->>>>>>> 3cbc801855ce4963a46101fb9b25a8739a7e0a76
