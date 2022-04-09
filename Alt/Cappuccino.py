@@ -12,12 +12,12 @@ class Cappuccino():
 
     def __init__(self):
         self.__name = 'Cappuccino'
-        self._zutatMilchschaum = 'Milchschaum'
+        self.__zutatMilchschaum = 'Milchschaum'
         self.__preisMilchschaum = 0.5
-        self._mengeMilchschaum = 2
-        self._zutatHeißeMilch = 'HeißeMilch'
+        self.__mengeMilchschaum = 2
+        self.__zutatHeißeMilch = 'HeißeMilch'
         self.__preisHeißeMilch = 1
-        self._mengeHeißeMilch = 1
+        self.__mengeHeißeMilch = 1
 
     def getName(self):
         return self.__name
@@ -26,7 +26,7 @@ class Cappuccino():
         return self.__preisMilchschaum
 
     def getZutatMilchschaum1(self):
-        return self._zutatMilchschaum
+        return self.__zutatMilchschaum
 
     def getMengeMilchschaum1(self):
         return self._mengeMilchschaum
@@ -35,7 +35,7 @@ class Cappuccino():
         return self.__preisHeißeMilch
 
     def getZutatHeißeMilch1(self):
-        return self._zutatHeißeMilch
+        return self.__zutatHeißeMilch
 
     def getMengeHeißeMilch1(self):
-        return self._mengeHeißeMilch
+        return self.__mengeHeißeMilch

@@ -1,16 +1,16 @@
 class EspressoMacchiato:
     '''
-    Erstellt die Classe EspressoMacchiato
-    Variabln:
+    Erstellt die Klasse EspressoMacchiato
+    Variablen:
     String _zutatMilchschaum
     floate __preisMilchschaum
     int _mengeMilchschaum
     '''
     def __init__(self):
         self.__name = 'Espresso Macchiato'
-        self._zutatMilchschaum = 'Milchschaum'
-        self.__preisMilchschaum = 1
-        self._mengeMilchschaum = 0.5
+        self.__zutatMilchschaum = 'Milchschaum'
+        self.__preisMilchschaum = 0.5
+        self._mengeMilchschaum = 1
 
     def getName(self):
         return self.__name
@@ -19,7 +19,7 @@ class EspressoMacchiato:
         return self.__preisMilchschaum
 
     def getZutatMilchschaum(self):
-        return self._zutatMilchschaum
+        return self.__zutatMilchschaum
 
     def getMengeMilchschaum(self):
-        return self._mengeMilchschaum
+        return self.__mengeMilchschaum
