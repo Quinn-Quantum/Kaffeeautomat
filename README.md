@@ -1,6 +1,5 @@
 # Kaffeeautomat
- 
-<<<<<<< HEAD
+
 ## Class
 - main 
   - Funktionen
