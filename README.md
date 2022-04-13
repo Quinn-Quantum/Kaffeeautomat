@@ -4,7 +4,7 @@
 ## Class
 - main 
   - Funktionen
-    - Zahlen - Steaffen
+    - Zahlen - Steaffen ->Gui Anbindung
     - hinzufügen von Rezepten -Maria
 - Getränke - Steffen
   - Variablen
