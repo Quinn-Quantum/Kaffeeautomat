@@ -1,3 +1,4 @@
+#später
 # Modul für die Kommunikation mit einer MySQL Datenbank
 import mysql.connector
 try:

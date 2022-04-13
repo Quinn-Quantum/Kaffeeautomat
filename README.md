@@ -20,6 +20,6 @@
       - Zutaten auffüllen
       - Rezept hinzufügen
 
-## DB - Maria
+## DB - Maria -später erst mit Liste
 - Liste an Getränken mit Gesamtpreis
 
