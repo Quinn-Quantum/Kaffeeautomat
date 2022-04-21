@@ -1,9 +1,14 @@
 from tkinter import *
 from tkinter import ttk
-from main import *
-from Kaffee import *
+import main
+import Kaffee
+
 
 #Butten Funktionen
+
+def zutun():
+    pass
+
 
 def addrezept():
     pass
@@ -12,19 +17,26 @@ def einstellungen():
     master = Tk()
     master.geometry('200x200')
     master.title('Einstellungen')
-    Label(master,text="Hallo", foreground = 'black').place(height=20, width=100, x = 90, y = 0)
-    Button(master, text="Rezept hinzufügen",command=addrezept,  background='SlateGray', foreground='black').place(height=40,
-                                                                                                     width=120, x=50,
-                                                                                                     y=10)
+    Button(master, text="Rezept hinzufügen", command=addrezept, background='SlateGray', foreground='black').place(
+        height=40,
+        width=120,
+        x=50,
+        y=10)
+    Button(master, text="Befüllen", command=zutun, background='SlateGray', foreground='black').place(
+        height=40,
+        width=120, x=50,
+        y=50)
     Button(master, text="Exit", command=master.destroy, background='SlateGray', foreground='black').place(height=40,
-                                                                                                     width=120, x=50,
-                                                                                                     y=10)
+                                                                                                          width=120,
+                                                                                                          x=50,
+                                                                                                          y=100)
     master.mainloop()
 
 def mixEspresso():
-     bestellung = main.makecaffe(espresso)
+    bestellung = Kaffee()
+    bestellung = main.makecaffe("espresso")
 
-     Label(master, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
+    Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
 
 
 
