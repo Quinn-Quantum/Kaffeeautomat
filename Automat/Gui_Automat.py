@@ -5,6 +5,8 @@ import Kaffee
 
 
 #Butten Funktionen
+
+
 def standert():
     pass
 
@@ -20,93 +22,114 @@ def zutun():
         y=10)
     master.mainloop()
 
+def okRezept():
+    listevorhandenerRezepte= main.listecaffees()
+    print(listevorhandenerRezepte)
+    print(entryZutat1.get())
+    listevorhandenerRezepte += [[entryName.get(),entryZutat1.get(),entryMenge1.get(),entryZutat2.get(),entryMenge1.get(),entryZutat3.get(),entryMenge1.get(),entryPreis.get()]]
+    main.saveListe(listevorhandenerRezepte)
+
+    master2.destroy()
+
+
+
 
 def addrezept():
-    master = Tk()
-    master.geometry('500x500')
-    master.title('Rezept')
+    master2 = Tk()
+    master2.geometry('500x500')
+    master2.title('Rezept')
 
-    labelName = Label(master,text="Name des Geträmkes").place(
+    labelName = Label(master2,text="Name des Geträmkes").place(
         height=40,
         width=120,
         x=10,
         y=10)
-    labelZutat1 = Label(master,text="Zutat 1").place(
+    labelZutat1 = Label(master2,text="Zutat 1").place(
         height=40,
         width=120,
         x=10,
         y=60)
-    labelZutat2 = Label(master,text="Zutat 2").place(
+    labelZutat2 = Label(master2,text="Zutat 2").place(
         height=40,
         width=120,
         x=10,
         y=110)
-    labelZutat3 = Label(master,text="Zutat 3").place(
+    labelZutat3 = Label(master2,text="Zutat 3").place(
         height=40,
         width=120,
         x=10,
         y=160)
 
-    labelMenge1 = Label(master,text="Menge 1").place(
+    labelMenge1 = Label(master2,text="Menge 1").place(
         height=40,
         width=120,
         x=250,
         y=60)
-    labelMenge2 = Label(master,text="Menge 2").place(
+    labelMenge2 = Label(master2,text="Menge 2").place(
         height=40,
         width=120,
         x=250,
         y=110)
-    labelMenge3 = Label(master,text="Menge 3").place(
+    labelMenge3 = Label(master2,text="Menge 3").place(
         height=40,
         width=120,
         x=250,
         y=160)
+    labelPreis = Label(master2, text="Preis").place(
+        height=40,
+        width=120,
+        x=10,
+        y=210)
 
-
-    entryName = Entry(master,width=10,background='LightSteelBlue').place(
+    entryName = Entry(master2,width=10,background='LightSteelBlue').place(
         height=40,
         width=120,
         x=150,
         y=10)
-    entryZutat1 = Entry(master,width=10,background='LightSteelBlue').place(
+
+    entryZutat1 = Entry(master2,width=10,background='LightSteelBlue').place(
         height=40,
         width=120,
         x=150,
         y=60)
-    entryZutat2 = Entry(master,width=10,background='LightSteelBlue').place(
+    entryZutat2 = Entry(master2,width=10,background='LightSteelBlue').place(
         height=40,
         width=120,
         x=150,
         y=110)
-    entryZutat3 = Entry(master,width=10,background='LightSteelBlue').place(
+    entryZutat3 = Entry(master2,width=10,background='LightSteelBlue').place(
         height=40,
         width=120,
         x=150,
         y=160)
 
-    entryMenge1 = Entry(master, width=10, background='LightSteelBlue').place(
+    entryMenge1 = Entry(master2, width=10, background='LightSteelBlue').place(
         height=40,
         width=120,
         x=350,
         y=60)
-    entryMenge2 = Entry(master, width=10, background='LightSteelBlue').place(
+    entryMenge2 = Entry(master2, width=10, background='LightSteelBlue').place(
         height=40,
         width=120,
         x=350,
         y=110)
-    entryMenge3 = Entry(master, width=10, background='LightSteelBlue').place(
+    entryMenge3 = Entry(master2, width=10, background='LightSteelBlue').place(
         height=40,
         width=120,
         x=350,
         y=160)
+    entryPreis = Entry(master2, width=10, background='LightSteelBlue').place(
+        height=40,
+        width=120,
+        x=150,
+        y=210)
 
-    Button(master, text="Bestätigen", command=standert, background='SeaGreen', foreground='black').place(
+    buttonAdd=Button(master2, text="Bestätigen",command=okRezept,background='SeaGreen', foreground='black').place(
         height=40,
         width=120,
         x=50,
         y=300)
-    master.mainloop()
+    master2.mainloop()
 
 def einstellungen():
     master = Tk()
@@ -128,25 +151,25 @@ def einstellungen():
     master.mainloop()
 
 def mixEspresso():
-    bestellung = Kaffee()
+    bestellung = Kaffee.Kaffee()
     bestellung = main.makecaffe("Espresso")
 
     Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
 
 def mixEspressoMachiarto():
-    bestellung = Kaffee()
+    bestellung = Kaffee.Kaffee()
     bestellung = main.makecaffe("Espresso Machiarto")
 
     Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
 
 def mixCappuccino():
-    bestellung = Kaffee()
+    bestellung = Kaffee.Kaffee()()
     bestellung = main.makecaffe("Cappuccino")
 
     Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
 
 def mixCafeeLatte():
-    bestellung = Kaffee()
+    bestellung = Kaffee.Kaffee()()
     bestellung = main.makecaffe("Café Latte")
 
     Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
