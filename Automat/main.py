@@ -15,6 +15,7 @@ def saveListe(listeKaffees):
         writerCSV = csv.writer(file)
         for row in listeKaffees:
             writerCSV.writerow(row)
+        pass
 
 def makecaffe(name):
     # Liste: Name, Inhalt, Menge, gesamt Preis
