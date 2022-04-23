@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import ttk
 import main
-import Kaffee
 import Verwaltung
 import csv
 
@@ -73,15 +72,29 @@ def addrezept():
         listevorhandenerRezepte = main.listecaffees()
         # Übernahme der Daten
         name = str(entryName.get())
-        print(name)
 
         zutat1 = str(entryZutat1.get())
         zutat2 = str(entryZutat2.get())
         zutat3 = str(entryZutat3.get())
 
-        menge1 = int(entryMenge1.get())
-        menge2 = int(entryMenge2.get())
-        menge3 = int(entryMenge3.get())
+        #Abfrage ob eine Menge Angegeben wurde
+        menge1 = entryMenge1.get()
+        if menge1 == '' :
+            menge1 = 0
+        else:
+            int(menge1)
+
+        menge2 = entryMenge2.get()
+        if menge2 =='' :
+            menge2 = 0
+        else:
+            int(menge2)
+
+        menge3 = entryMenge3.get()
+        if menge3 == '' :
+            menge3 = 0
+        else:
+            int(menge1)
 
         preis = float(entryPreis.get())
 
@@ -125,7 +138,7 @@ def addrezept():
     labelMenge1 = Label(master=tkFenster, text='Menge 1:')
     labelMenge1.place(x=250, y=60, width=100, height=27)
     # Entry für Meng1
-    entryMenge1 = Entry(master=tkFenster, bg='LightSteelBlue')
+    entryMenge1 = Entry(master=tkFenster ,bg='LightSteelBlue')
     entryMenge1.place(x=350, y=60, width=100, height=27)
     # Label Menge2
     labelMenge2 = Label(master=tkFenster, text='Menge 2:')
@@ -162,7 +175,7 @@ def einstellungen():
     buttonRezept.place(height=40, width=120, x=50, y=10)
 
     buttenBestnadsettings = Button(master=master1, text="Bestand", command=bestand, background='LightGrey', foreground='black')
-    buttenBestnadsettings.place(height=40, width=120, x=50, y=50)
+    buttenBestnadsettings.place(height=40, width=120, x=50, y=60)
 
     master1.mainloop()
 

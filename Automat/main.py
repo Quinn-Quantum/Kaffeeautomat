@@ -2,7 +2,6 @@ import csv
 import time
 import Verwaltung
 
-import Kaffee
 def listecaffees():
     listekaffes =[]
     with open('Kaffees.csv') as csvdatei:
