@@ -1,5 +1,6 @@
 import csv
 import time
+import Verwaltung
 
 import Kaffee
 def listecaffees():
@@ -24,15 +25,15 @@ def makecaffe(name):
     i = 0
     for i in range(len(listekaffes)):
         if listekaffes[i][0] == name:
-            caffe = Kaffee()
-            setName = caffe.listekaffes[i][0]
-            setZutat1 = caffe.listekaffes[i][1]
-            setMenge1 = caffe.listekaffes[i][2]
-            setZutat2 = caffe.listekaffes[i][3]
-            setMenge2 = caffe.listekaffes[i][4]
-            setZutat3 = caffe.listekaffes[i][3]
-            setMenge3 = caffe.listekaffes[i][4]
-            setPreis= caffe.listekaffes[i][5]
+            caffe = Verwaltung.Kaffee()
+            caffe.setName(caffe.listekaffes[i][0])
+            caffe.setZutat1(caffe.listekaffes[i][1])
+            caffe.setMenge1(caffe.listekaffes[i][2])
+            caffe.setZutat2(caffe.listekaffes[i][3])
+            caffe.setMenge2(caffe.listekaffes[i][4])
+            caffe.setZutat3(caffe.listekaffes[i][3])
+            caffe.setMenge3(caffe.listekaffes[i][4])
+            caffe.setPreis(caffe.listekaffes[i][5])
             return caffe
 
 
