@@ -2,24 +2,70 @@ from tkinter import *
 from tkinter import ttk
 import main
 import Kaffee
+import Verwaltung
+import csv
 
 
 #Butten Funktionen
 
+def aktuellerBestand():
+    bestand = Verwaltung.Bestand()
 
-def standert():
-    pass
+    with open('Bestand.csv') as csvdatei:
+        readerCSV = csv.reader(csvdatei)
+        for row in readerCSV:
+            bestand.setBEspresso(int(row[0]))
+            bestand.setBMilchschaum(int(row[1]))
+            bestand.setBHeißeMilch(int(row[2]))
+            print(bestand.getBEspresso())
+
+    bestandFenster = Tk()
+    bestandFenster.geometry('200x200')
+    bestandFenster.title('Aktuellerbestand')
+
+    labelText= Label(master=bestandFenster, text='Bestand der Zutaten:')
+    labelText.place(x=10, y=10, width=100, height=27)
+
+    labelEspresso = Label(master=bestandFenster, text='Espresso: {}'.format(bestand.getBEspresso()))
+    labelEspresso.place(x=10, y=10, width=100, height=27)
+
+    labelSchaum = Label(master=bestandFenster, text='Milchschaum: {}'.format(bestand.getBMilchschaum()))
+    labelSchaum.place(x=10, y=10, width=100, height=27)
+
+    labelMilch = Label(master=bestandFenster, text='heiße Milch: {}'.format(bestand.getBHeißeMilch()))
+    labelMilch.place(x=10, y=10, width=100, height=27)
+
+    bestandFenster.mainloop()
+
+def bestand():
+    def standert():
+        bestand = Verwaltung.Bestand()
+        with open('Bestand.csv') as csvdatei:
+            readerCSV = csv.reader(csvdatei)
+            for row in readerCSV:
+                bestand.setBEspresso(int(row[0]) + 5)
+                bestand.setBMilchschaum(int(row[1]) + 5)
+                bestand.setBHeißeMilch(int(row[2]) + 5)
+
+        listeBestand = [bestand.getBEspresso(), bestand.getBMilchschaum(), bestand.getBHeißeMilch()]
+        file = open('Bestand.csv', 'w', newline='')
+        i=0
+        while file and i<1:
+            writerCSV = csv.writer(file)
+            writerCSV.writerow(listeBestand)
+            i=1
 
 
-def zutun():
     master = Tk()
     master.geometry('200x200')
     master.title('Einstellungen')
-    Button(master, text="Standert", command=standert, background='SlateGray', foreground='black').place(
-        height=40,
-        width=120,
-        x=50,
-        y=10)
+
+    buttonBefuellung = Button(master=master, text="standert Befüllung", command=standert, background='LightGrey', foreground='black')
+    buttonBefuellung.place(height=40, width=120, x=50, y=10)
+
+    buttonBestand = Button(master=master, text="aktueller Bestand", command=aktuellerBestand, background='LightGrey', foreground='black')
+    buttonBestand.place( height=40, width=120, x=50, y=60)
+
     master.mainloop()
 
 
@@ -114,20 +160,16 @@ def addrezept():
 
 
 def einstellungen():
-    master = Tk()
-    master.geometry('200x200')
-    master.title('Einstellungen')
-    Button(master, text="Rezept hinzufügen", command=addrezept, background='LightGrey', foreground='black').place(
-        height=40,
-        width=120,
-        x=50,
-        y=10)
-    Button(master, text="Befüllen", command=zutun, background='LightGrey', foreground='black').place(
-        height=40,
-        width=120, x=50,
-        y=50)
+    master1 = Tk()
+    master1.geometry('200x200')
+    master1.title('Einstellungen')
+    buttonRezept = Button(master=master1, text="Rezept hinzufügen", command=addrezept, background='LightGrey', foreground='black')
+    buttonRezept.place(height=40, width=120, x=50, y=10)
 
-    master.mainloop()
+    buttenBestnadsettings = Button(master=master1, text="Bestand", command=bestand, background='LightGrey', foreground='black')
+    buttenBestnadsettings.place(height=40, width=120, x=50, y=50)
+
+    master1.mainloop()
 
 def mixEspresso():
     bestellung = Kaffee.Kaffee()

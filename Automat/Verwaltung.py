@@ -74,9 +74,9 @@ class Bestand:
     __bHeißeMilch = 0
 
     def __init__(self):
-        self.__bEspresso = 0
-        self.__bMilchschaum = 0
-        self.__bHeißeMilch = 0
+        self.__bEspresso
+        self.__bMilchschaum
+        self.__bHeißeMilch
 
     # get
     def getBEspresso(self):
@@ -89,7 +89,6 @@ class Bestand:
         return self.__bHeißeMilch
 
     # set
-
     def setBEspresso(self, bEspresso):
         self.__bEspresso = bEspresso
 

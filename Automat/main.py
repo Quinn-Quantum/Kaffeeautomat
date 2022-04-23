@@ -31,9 +31,9 @@ def makecaffe(name):
             caffe.setMenge1(caffe.listekaffes[i][2])
             caffe.setZutat2(caffe.listekaffes[i][3])
             caffe.setMenge2(caffe.listekaffes[i][4])
-            caffe.setZutat3(caffe.listekaffes[i][3])
-            caffe.setMenge3(caffe.listekaffes[i][4])
-            caffe.setPreis(caffe.listekaffes[i][5])
+            caffe.setZutat3(caffe.listekaffes[i][5])
+            caffe.setMenge3(caffe.listekaffes[i][6])
+            caffe.setPreis(caffe.listekaffes[i][7])
             return caffe
 
 
