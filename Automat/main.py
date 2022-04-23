@@ -1,4 +1,5 @@
 import csv
+import time
 
 import Kaffee
 def listecaffees():
@@ -15,7 +16,7 @@ def saveListe(listeKaffees):
         writerCSV = csv.writer(file)
         for row in listeKaffees:
             writerCSV.writerow(row)
-        pass
+        return True
 
 def makecaffe(name):
     # Liste: Name, Inhalt, Menge, gesamt Preis

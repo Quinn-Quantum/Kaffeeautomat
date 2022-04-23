@@ -46,7 +46,7 @@ def addrezept():
         listevorhandenerRezepte += [
             [name, zutat1,menge1, zutat2, menge2,
              zutat3, menge3, preis]]
-        main.saveListe(listevorhandenerRezepte)
+        boolVariable=main.saveListe(listevorhandenerRezepte)
         tkFenster.destroy()
 
 
@@ -73,7 +73,7 @@ def addrezept():
     entryZutat2 = Entry(master=tkFenster, bg='LightSteelBlue')
     entryZutat2.place(x=150, y=110, width=100, height=27)
     # Label Zutat3
-    labelZutat3 = Label(master=tkFenster, text='Zutat 2:')
+    labelZutat3 = Label(master=tkFenster, text='Zutat 3:')
     labelZutat3.place(x=10, y=160, width=100, height=27)
     # Entry für Zutat3
     entryZutat3 = Entry(master=tkFenster, bg='LightSteelBlue')
