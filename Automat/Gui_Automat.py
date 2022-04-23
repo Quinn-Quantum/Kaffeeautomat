@@ -99,9 +99,7 @@ def addrezept():
         preis = float(entryPreis.get())
 
         # Verarbeitung der Daten
-        listevorhandenerRezepte += [
-            [name, zutat1,menge1, zutat2, menge2,
-             zutat3, menge3, preis]]
+        listevorhandenerRezepte += [[name,zutat1,menge1,zutat2,menge2,zutat3, menge3,preis]]
         boolVariable=main.saveListe(listevorhandenerRezepte)
         tkFenster.destroy()
 
