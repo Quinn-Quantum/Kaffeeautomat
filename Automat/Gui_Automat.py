@@ -192,13 +192,13 @@ def mixEspressoMachiarto():
     Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
 
 def mixCappuccino():
-    bestellung = Kaffee.Kaffee()()
+    bestellung = Kaffee.Kaffee()
     bestellung = main.makecaffe("Cappuccino")
 
     Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
 
 def mixCafeeLatte():
-    bestellung = Kaffee.Kaffee()()
+    bestellung = Kaffee.Kaffee()
     bestellung = main.makecaffe("Café Latte")
 
     Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
