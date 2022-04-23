@@ -68,9 +68,6 @@ def bestand():
 
     master.mainloop()
 
-
-
-
 def addrezept():
     def buttonHinzufügen():
         listevorhandenerRezepte = main.listecaffees()
@@ -94,7 +91,6 @@ def addrezept():
              zutat3, menge3, preis]]
         boolVariable=main.saveListe(listevorhandenerRezepte)
         tkFenster.destroy()
-
 
     tkFenster = Tk()
     tkFenster.title('Ergänzung')
@@ -158,7 +154,6 @@ def addrezept():
     # Aktivierung des Fensters
     tkFenster.mainloop()
 
-
 def einstellungen():
     master1 = Tk()
     master1.geometry('200x200')
@@ -203,7 +198,6 @@ if __name__ == "__main__":
 
     #Labels
     Label(frm, text="Kaffee Auswahl", background = 'LightBlue', foreground = 'black').place( height=20, width=100, x = 90, y = 0)
-
 
     #Buttons
     buttonEspresso = Button(frm, text="Espresso",command= mixEspresso , background = 'Tan', foreground = 'black').place( height=40, width=120, x = 20, y = 40)

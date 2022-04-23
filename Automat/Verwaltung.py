@@ -1,5 +1,4 @@
 class Kaffee:
-
     __name = ""
     __gesamtpreis = 0.0
     __zutat1 = ""
