@@ -24,16 +24,16 @@ def aktuellerBestand():
     bestandFenster.title('Aktuellerbestand')
 
     labelText= Label(master=bestandFenster, text='Bestand der Zutaten:')
-    labelText.place(x=10, y=10, width=100, height=27)
+    labelText.place(x=20, y=10,  height=27)
 
     labelEspresso = Label(master=bestandFenster, text='Espresso: {}'.format(bestand.getBEspresso()))
-    labelEspresso.place(x=10, y=10, width=100, height=27)
+    labelEspresso.place(x=20, y=40, height=27)
 
     labelSchaum = Label(master=bestandFenster, text='Milchschaum: {}'.format(bestand.getBMilchschaum()))
-    labelSchaum.place(x=10, y=10, width=100, height=27)
+    labelSchaum.place(x=20, y=70,  height=27)
 
     labelMilch = Label(master=bestandFenster, text='heiße Milch: {}'.format(bestand.getBHeißeMilch()))
-    labelMilch.place(x=10, y=10, width=100, height=27)
+    labelMilch.place(x=20, y=100,  height=27)
 
     bestandFenster.mainloop()
 
