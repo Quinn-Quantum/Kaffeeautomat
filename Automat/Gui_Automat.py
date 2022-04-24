@@ -16,7 +16,6 @@ def aktuellerBestand():
             bestand.setBEspresso(int(row[0]))
             bestand.setBMilchschaum(int(row[1]))
             bestand.setBHeißeMilch(int(row[2]))
-            print(bestand.getBEspresso())
 
     bestandFenster = Tk()
     bestandFenster.geometry('200x200')
@@ -177,29 +176,13 @@ def einstellungen():
 
     master1.mainloop()
 
-def mixEspresso():
+def mixKaffee(coffe):
+    print(coffe)
     bestellung = Kaffee.Kaffee()
-    bestellung = main.makecaffe("Espresso")
+    bestellung = main.makecaffe(coffe)
 
     Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
 
-def mixEspressoMachiarto():
-    bestellung = Kaffee.Kaffee()
-    bestellung = main.makecaffe("Espresso Machiarto")
-
-    Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
-
-def mixCappuccino():
-    bestellung = Kaffee.Kaffee()
-    bestellung = main.makecaffe("Cappuccino")
-
-    Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
-
-def mixCafeeLatte():
-    bestellung = Kaffee.Kaffee()
-    bestellung = main.makecaffe("Café Latte")
-
-    Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
 
 if __name__ == "__main__":
     root = Tk()
@@ -211,10 +194,10 @@ if __name__ == "__main__":
     Label(frm, text="Kaffee Auswahl", background = 'LightBlue', foreground = 'black').place( height=20, width=100, x = 90, y = 0)
 
     #Buttons
-    buttonEspresso = Button(frm, text="Espresso",command= mixEspresso , background = 'Tan', foreground = 'black').place( height=40, width=120, x = 20, y = 40)
-    buttonEspressoMachiarto = Button(frm, text="Espresso Machiarto", command= mixEspressoMachiarto, background = 'Tan', foreground = 'black').place(height=40, width=120, x = 160, y = 40)
-    buttonCappuccino = Button(frm, text="Cappuccino", command= mixCappuccino , background = 'Tan', foreground = 'black').place(height=40, width=120, x = 20, y = 90)
-    buttonCafeeLatte = Button(frm, text="Cafee Latte", command= mixCafeeLatte , background = 'Tan', foreground = 'black').place( height=40, width=120, x = 160, y = 90)
+    buttonEspresso = Button(frm, text="Espresso",command=lambda: mixKaffee("Espresso") , background = 'Tan', foreground = 'black').place( height=40, width=120, x = 20, y = 40)
+    buttonEspressoMachiarto = Button(frm, text="Espresso Machiarto", command=lambda: mixKaffee("Espresso Machiarto"), background = 'Tan', foreground = 'black').place(height=40, width=120, x = 160, y = 40)
+    buttonCappuccino = Button(frm, text="Cappuccino", command=lambda: mixKaffee("Cappuccino") , background = 'Tan', foreground = 'black').place(height=40, width=120, x = 20, y = 90)
+    buttonCafeeLatte = Button(frm, text="Cafee Latte", command=lambda: mixKaffee("Cafee Latte") , background = 'Tan', foreground = 'black').place( height=40, width=120, x = 160, y = 90)
     buttonEinstellungen = Button(frm, text="Einstellungen" ,  background = 'LightGrey', foreground = 'black', command = einstellungen).place( height=40, width=120, x = 20, y = 200)
     Button(frm, text="Exit", command=root.destroy, background = 'LightGrey', foreground = 'black').place( height=40, width=120, x = 150, y = 200)
     root.mainloop()

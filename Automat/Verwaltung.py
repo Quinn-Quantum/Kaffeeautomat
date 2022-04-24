@@ -8,15 +8,15 @@ class Kaffee:
     __menge2 = 0
     __menge3 = 0
 
-    def __init__(self,gesamtpreis, name, zutat1,zutat2, zutat3, menge1, menge2, menge3):
-        self.__gesamtpreis = gesamtpreis
-        self.__name = name
-        self.__zutat1 = zutat1
-        self.__zutat2 = zutat2
-        self.__zutat3 = zutat3
-        self.__menge1 = menge1
-        self.__menge2 = menge2
-        self.__menge3 = menge3
+    def __init__(self):
+        self.__gesamtpreis
+        self.__name
+        self.__zutat1
+        self.__zutat2
+        self.__zutat3
+        self.__menge1
+        self.__menge2
+        self.__menge3
 #Get
     def getPreis(self):
         return self.__gesamtpreis
