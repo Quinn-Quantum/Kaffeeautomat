@@ -2,6 +2,7 @@ import csv
 import time
 import Verwaltung
 
+#Gibt eine Liste ter Kaffees mit ihren Zutaten und den dazugehörigen Mengen so wie den Gesamtpreis zurück
 def listecaffees():
     listekaffes =[]
     with open('Kaffees.csv') as csvdatei:
@@ -9,7 +10,7 @@ def listecaffees():
         for zeile in readerCSV:
             listekaffes +=[zeile]
     return listekaffes
-
+#Überschreibt die CSV mit der neuen Liste
 def saveListe(listeKaffees):
     file = open('Kaffees.csv', 'w', newline='')
     while file:
@@ -17,14 +18,14 @@ def saveListe(listeKaffees):
         for row in listeKaffees:
             writerCSV.writerow(row)
         return True
-
+#Kaffee wird ausgelesen und in seine Bestandteile zerlägt
 def makecaffe(name):
-    # Liste: Name, Inhalt, Menge, gesamt Preis
     listekaffes = listecaffees()
+    #Der Kaffee wird als Opjekt gehandelt um seine Variablen einzelt zu verwänden
+    caffe = Verwaltung.Kaffee()
     i = 0
     for i in range(len(listekaffes)):
         if listekaffes[i][0] == name:
-            caffe = Verwaltung.Kaffee()
             caffe.setName(caffe.listekaffes[i][0])
             caffe.setZutat1(caffe.listekaffes[i][1])
             caffe.setMenge1(caffe.listekaffes[i][2])

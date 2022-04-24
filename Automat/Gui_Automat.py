@@ -8,8 +8,8 @@ import csv
 #Butten Funktionen
 
 def aktuellerBestand():
+    # Wird in ein Objekt gespeichert zu besseren weiter Verwändung
     bestand = Verwaltung.Bestand()
-
     with open('Bestand.csv') as csvdatei:
         readerCSV = csv.reader(csvdatei)
         for row in readerCSV:
@@ -23,7 +23,7 @@ def aktuellerBestand():
 
     labelText= Label(master=bestandFenster, text='Bestand der Zutaten:')
     labelText.place(x=20, y=10,  height=27)
-
+    #Label für die Bestandsauskunft
     labelEspresso = Label(master=bestandFenster, text='Espresso: {}'.format(bestand.getBEspresso()))
     labelEspresso.place(x=20, y=40, height=27)
 
@@ -36,7 +36,9 @@ def aktuellerBestand():
     bestandFenster.mainloop()
 
 def bestand():
+    #Befüll Function
     def standert():
+        #Wird in ein Objekt gespeichert zu besseren weiter Verwändung
         bestand = Verwaltung.Bestand()
         with open('Bestand.csv') as csvdatei:
             readerCSV = csv.reader(csvdatei)
@@ -57,10 +59,10 @@ def bestand():
     master = Tk()
     master.geometry('200x200')
     master.title('Einstellungen')
-
+    #Butten zu Standart befüllung alle Zutaten wärden um 5 aufgefüllt
     buttonBefuellung = Button(master=master, text="standert Befüllung", command=standert, background='LightGrey', foreground='black')
     buttonBefuellung.place(height=40, width=120, x=50, y=10)
-
+    #Butten um den Aktuellen Bestastand abzufragen
     buttonBestand = Button(master=master, text="aktueller Bestand", command=aktuellerBestand, background='LightGrey', foreground='black')
     buttonBestand.place( height=40, width=120, x=50, y=60)
 
@@ -131,10 +133,10 @@ def addrezept():
     entryZutat3 = Entry(master=tkFenster, bg='LightSteelBlue')
     entryZutat3.place(x=150, y=160, width=100, height=27)
 
-    # Label Menge1
+    # Label Menge1 für Zutat1
     labelMenge1 = Label(master=tkFenster, text='Menge 1:')
     labelMenge1.place(x=250, y=60, width=100, height=27)
-    # Entry für Meng1
+    # Entry für Meng1 für Zutat1
     entryMenge1 = Entry(master=tkFenster ,bg='LightSteelBlue')
     entryMenge1.place(x=350, y=60, width=100, height=27)
     # Label Menge2
@@ -157,20 +159,21 @@ def addrezept():
     entryPreis = Entry(master=tkFenster, bg='LightSteelBlue')
     entryPreis.place(x=150, y=210, width=100, height=27)
 
-    # Button zum hinzufügen
+    # Button zum hinzufügen des neuen Rezeptes
     buttonBerechnen = Button(master=tkFenster, text='Hinzufügen',bg ='LightGreen' , command=buttonHinzufügen)
     buttonBerechnen.place(x=50, y=300, width=100, height=27)
 
     # Aktivierung des Fensters
     tkFenster.mainloop()
-
+#Function: Settings
 def einstellungen():
     master1 = Tk()
     master1.geometry('200x200')
     master1.title('Einstellungen')
+    #Button um eine rezept hinzuzufügen
     buttonRezept = Button(master=master1, text="Rezept hinzufügen", command=addrezept, background='LightGrey', foreground='black')
     buttonRezept.place(height=40, width=120, x=50, y=10)
-
+    #Button um zu den Optionen von Bestand zu kommen
     buttenBestnadsettings = Button(master=master1, text="Bestand", command=bestand, background='LightGrey', foreground='black')
     buttenBestnadsettings.place(height=40, width=120, x=50, y=60)
 
