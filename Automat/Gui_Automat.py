@@ -184,7 +184,7 @@ def mixKaffee(coffe):
     bestellung = Verwaltung.Kaffee()
     bestellung = main.makecaffe(coffe)
 
-    Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)
+    Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=10, y=150)
 
 
 if __name__ == "__main__":
@@ -201,6 +201,6 @@ if __name__ == "__main__":
     buttonEspressoMachiarto = Button(frm, text="Espresso Machiarto", command=lambda: mixKaffee("Espresso Machiarto"), background = 'Tan', foreground = 'black').place(height=40, width=120, x = 160, y = 40)
     buttonCappuccino = Button(frm, text="Cappuccino", command=lambda: mixKaffee("Cappuccino") , background = 'Tan', foreground = 'black').place(height=40, width=120, x = 20, y = 90)
     buttonCafeeLatte = Button(frm, text="Cafee Latte", command=lambda: mixKaffee("Cafee Latte") , background = 'Tan', foreground = 'black').place( height=40, width=120, x = 160, y = 90)
-    buttonEinstellungen = Button(frm, text="Einstellungen" ,  background = 'LightGrey', foreground = 'black', command = einstellungen).place( height=40, width=120, x = 20, y = 200)
-    Button(frm, text="Exit", command=root.destroy, background = 'LightGrey', foreground = 'black').place( height=40, width=120, x = 150, y = 200)
+    buttonEinstellungen = Button(frm, text="Einstellungen" ,  background = 'LightGrey', foreground = 'black', command = einstellungen).place( height=40, width=120, x = 20, y = 300)
+    Button(frm, text="Exit", command=root.destroy, background = 'LightGrey', foreground = 'black').place( height=40, width=120, x = 150, y = 300)
     root.mainloop()
