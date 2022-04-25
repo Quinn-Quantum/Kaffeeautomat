@@ -7,7 +7,7 @@
     - hinzufügen von Rezepten -Maria
 - Getränke - Steffen
   - Variablen
-    - zutaten 1-4
+    - zutaten 1-3
     - gesamtpreis
     - name
 - Bestand - Steffen
@@ -18,6 +18,9 @@
     - Button für Einstelungen
       - Zutaten auffüllen
       - Rezept hinzufügen
+
+CSV Bestand: Espresso, Michschaum, heiße Milch
+CSV Kaffees: Name, Zutat1, Menge1, Zutat2, Menge2, Zutat3, Menge3, gesamt Preis
 
 ## DB - Maria -später erst mit Liste
 - Liste an Getränken mit Gesamtpreis

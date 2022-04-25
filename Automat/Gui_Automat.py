@@ -181,7 +181,7 @@ def einstellungen():
 
 def mixKaffee(coffe):
     print(coffe)
-    bestellung = Kaffee.Kaffee()
+    bestellung = Verwaltung.Kaffee()
     bestellung = main.makecaffe(coffe)
 
     Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=90, y=0)

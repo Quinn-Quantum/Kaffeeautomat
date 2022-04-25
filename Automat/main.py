@@ -26,14 +26,14 @@ def makecaffe(name):
     i = 0
     for i in range(len(listekaffes)):
         if listekaffes[i][0] == name:
-            caffe.setName(caffe.listekaffes[i][0])
-            caffe.setZutat1(caffe.listekaffes[i][1])
-            caffe.setMenge1(caffe.listekaffes[i][2])
-            caffe.setZutat2(caffe.listekaffes[i][3])
-            caffe.setMenge2(caffe.listekaffes[i][4])
-            caffe.setZutat3(caffe.listekaffes[i][5])
-            caffe.setMenge3(caffe.listekaffes[i][6])
-            caffe.setPreis(caffe.listekaffes[i][7])
+            caffe.setName(listekaffes[i][0])
+            caffe.setZutat1(listekaffes[i][1])
+            caffe.setMenge1(listekaffes[i][2])
+            caffe.setZutat2(listekaffes[i][3])
+            caffe.setMenge2(listekaffes[i][4])
+            caffe.setZutat3(listekaffes[i][5])
+            caffe.setMenge3(listekaffes[i][6])
+            caffe.setPreis(listekaffes[i][7])
             return caffe
 
 
