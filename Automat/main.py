@@ -1,6 +1,7 @@
 import csv
 import time
 import Verwaltung
+import Verwaltung_Bestand
 
 #Gibt eine Liste ter Kaffees mit ihren Zutaten und den dazugehörigen Mengen so wie den Gesamtpreis zurück
 def listecaffees():
@@ -10,6 +11,7 @@ def listecaffees():
         for zeile in readerCSV:
             listekaffes +=[zeile]
     return listekaffes
+
 #Überschreibt die CSV mit der neuen Liste
 def saveListe(listeKaffees):
     file = open('Kaffees.csv', 'w', newline='')
@@ -18,6 +20,8 @@ def saveListe(listeKaffees):
         for row in listeKaffees:
             writerCSV.writerow(row)
         return True
+
+
 #Kaffee wird ausgelesen und in seine Bestandteile zerlägt
 def makecaffe(name):
     listekaffes = listecaffees()
@@ -36,9 +40,7 @@ def makecaffe(name):
             caffe.setPreis(listekaffes[i][7])
             return caffe
 
-
-
-
+#Überprüfung ob eine der Zutaten zu gerin vorhanden ist und zum abziehen der benötigten Zutaten
 def bestandstests(objektKaffee):
     listeZutaten = []
     bMengenangabe = True
@@ -51,6 +53,8 @@ def bestandstests(objektKaffee):
     for i in range(len(listeZutaten)):
         for j in range(len(listeZutaten[i])):
             #Test ob die Zuteten mit den Mengen und Zuteten in der Liste übereinstimmen
+            #solte die Zutat zugering vorhanden sein wird die Funktion beendet und ein Fals zu rückgegeben
+            #else: die benötigte Menge wird abgezogen
             if listeZutaten[i][j] == objektKaffee.getZutat1():
                 if listeZutaten[i][j+1] < objektKaffee.getMenge1():
                     bMengenangabe = False
@@ -77,15 +81,12 @@ def bestandstests(objektKaffee):
         writer = csv.writer(file)
         for row in listeZutaten:
             writer.writerow(row)
-
-
-
-
     return bMengenangabe
 
+#Funktion um die Daten aus der Bestand.csv in ein Objektzu schreiben
 def bestandCSVauslesen():
     with open('Bestand.csv') as csvdatei:
         readerCSV = csv.reader(csvdatei)
         for row in readerCSV:
-            bestand = Verwaltung.Bestand(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8])
+            bestand = Verwaltung_Bestand.Bestand(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8])
     return bestand

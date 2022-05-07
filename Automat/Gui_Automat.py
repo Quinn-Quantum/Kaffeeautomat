@@ -27,7 +27,7 @@ def aktuellerBestand():
 
     labelMilch = Label(master=bestandFenster, text='{}: {}'.format(bestand.getSZutat3(),bestand.getIZutat3()))
     labelMilch.place(x=20, y=100,  height=27)
-
+    # Aktivierung des Fensters
     bestandFenster.mainloop()
 
 def bestand():
@@ -35,11 +35,11 @@ def bestand():
     def standert():
         #Wird in ein Objekt gespeichert zu besseren weiter Verwändung
         bestand = main.bestandCSVauslesen()
-
+        #Jede Zutat wird um 5 erhöht
         bestand.setIZutat1(int(bestand.getIZutat1())+5)
         bestand.setIZutat2(int(bestand.getIZutat2()) + 5)
         bestand.setIZutat3(int(bestand.getIZutat3()) + 5)
-
+        #wieder in eine Liste geschrieben zur Speicherung in eine CSV-Datei
         listeBestand = [bestand.getSZutat1(),bestand.getIZutat1(),bestand.getFZutat1(),bestand.getSZutat2(),bestand.getIZutat2(),bestand.getFZutat2(), bestand.getSZutat3(),bestand.getIZutat3(),bestand.getFZutat3()]
         file = open('Bestand.csv', 'w', newline='')
         i=0
@@ -58,7 +58,7 @@ def bestand():
     #Butten um den Aktuellen Bestastand abzufragen
     buttonBestand = Button(master=master, text="aktueller Bestand", command=aktuellerBestand, background='LightGrey', foreground='black')
     buttonBestand.place( height=40, width=120, x=50, y=60)
-
+    # Aktivierung des Fensters
     master.mainloop()
 
 def addrezept():
@@ -89,13 +89,15 @@ def addrezept():
             menge3 = 0
         else:
             int(menge3)
+            
         listeZutaten = []
-        # aus Bestand.csv in eine Liste zum vergleichen mit dem Objekt
+        # aus Bestand.csv in eine Liste und nicht in ein Objekt zu dynamischen weiter Verwändung
         with open('Bestand.csv') as csvdatei:
             reader = csv.reader(csvdatei)
             for row in reader:
                 listeZutaten += [row]
-        preis = 0.5
+        #Berechnung des Getränkepreises
+        preis = 0.5 #0.5€ sind der Grundpreis
         for i in range(len(listeZutaten)):
             for j in range(len(listeZutaten[i])):
                 if listeZutaten[i][j] == zutat1:
@@ -105,8 +107,6 @@ def addrezept():
                 if listeZutaten[i][j] == zutat3:
                     preis =preis+(float(menge3) * float(listeZutaten[i][j+2]))
 
-
-
         # Verarbeitung der Daten
         listevorhandenerRezepte += [[name,zutat1,menge1,zutat2,menge2,zutat3, menge3,preis]]
         boolVariable=main.saveListe(listevorhandenerRezepte)
@@ -115,6 +115,7 @@ def addrezept():
     tkFenster = Tk()
     tkFenster.title('Ergänzung')
     tkFenster.geometry('500x450')
+
     # Label für den Name
     labelName = Label(master=tkFenster, text='Name')
     labelName.place(x=10, y=10, width=100, height=27)
@@ -160,11 +161,9 @@ def addrezept():
     entryMenge3 = Entry(master=tkFenster, bg='LightSteelBlue')
     entryMenge3.place(x=350, y=160, width=100, height=27)
 
-
     # Button zum hinzufügen des neuen Rezeptes
     buttonBerechnen = Button(master=tkFenster, text='Hinzufügen',bg ='LightGreen' , command=buttonHinzufügen)
     buttonBerechnen.place(x=50, y=300, width=100, height=27)
-
     # Aktivierung des Fensters
     tkFenster.mainloop()
 #Function: Settings
@@ -178,57 +177,68 @@ def einstellungen():
     #Button um zu den Optionen von Bestand zu kommen
     buttenBestnadsettings = Button(master=master1, text="Bestand", command=bestand, background='LightGrey', foreground='black')
     buttenBestnadsettings.place(height=40, width=120, x=50, y=60)
-
+    # Aktivierung des Fensters
     master1.mainloop()
-
-
 
 def mixKaffee(coffe):
 
     def bezahle(zuZahlen):
         def rechner(betrag):
+            #betrag ist eingewurfene Münze
+            #Den Offenen Betrag aus den Label lesen
             nochZuZahlen = float(labelNochzuZahlen.cget("text"))
+            #Berechnung der Differenz
             nochZuZahlen = nochZuZahlen -betrag
+            #gibt es nichts mehr zu bezahlen oder es wurde zu viel bezahlt
+            #geht es zum voriegen Fenster zurück und dieses wird beendet
             if nochZuZahlen <= 0:
                 labelreGelt.config(text=-nochZuZahlen)
                 bezahl.destroy()
+            #Übergabe des Neuen noch zu zahlenden Betrages
             labelNochzuZahlen.config(text=nochZuZahlen)
 
         bezahl = Tk()
         bezahl.geometry('300x400')
         bezahl.title('Bezahlen')
 
-
+        Label(bezahl, text = "Zu zahlen: ").place(height=20, width=110, x = 30, y = 20)
         labelNochzuZahlen = Label(bezahl,text = zuZahlen,bg="LightGrey")
-        labelNochzuZahlen.place( height=20, width=100, x = 90, y = 20)
+        labelNochzuZahlen.place( height=20, width=100, x = 120, y = 20)
 
-
+        #Buttens mit den Zuverfügung stehenen Münzen
         button50Cent = Button(bezahl,text="50 cent", command=lambda: rechner(0.5), background='DarkSeaGreen',foreground='black').place(height=40, width=120, x=20, y=60)
         butten1Euro = Button(bezahl,text="1€", command=lambda: rechner(1.0),background='DarkSeaGreen', foreground='black').place(height=40, width=120, x=160, y=60)
         button2Euro = Button(bezahl,text="2€", command=lambda: rechner(2.0), background='DarkSeaGreen',foreground='black').place(height=40, width=120, x=20, y=110)
+        #kein .mainloop da sich das Fenster sonst nicht automatisch schießt da labelreGelt erst später kommt und Python zeilenorieentiert ist.
 
-
+    #Objekt Kaffee wird erzeugt
     bestellung = Verwaltung.Kaffee()
+    #Objekt kaffe wird mit der Befüllfunktion makecaffe gefüllt, ihr wird einString mit den Namen des Getränkes übergeben
     bestellung = main.makecaffe(coffe)
+    #Überprüfen ob alle notwendigen Zutaten in ihrer Menge da sind
     allesda = main.bestandstests(bestellung)
 
     if allesda == False:
+        #Wenn Fals muss erst der Bestand aufgefühlt werden
         bestand()
     else:
+        #ist Bestand OK geht es zum bezahlen
+        #Rückgelt wird zurückgegeben
         reGelt = bezahle(bestellung.getPreis())
-
+        #Anzeige für die einzelnen Zutaten
         Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=120, x=10, y=150)
         Label(frm, text = "Zutaten:").place(height=20, width=100, x=10, y=180)
         Label(frm, text=bestellung.getZutat1(), foreground='black').place(height=20, width=120, x=10, y=210)
         Label(frm, text=bestellung.getZutat2(), foreground='black').place(height=20, width=120, x=10, y=240)
         Label(frm, text=bestellung.getZutat3(), foreground='black').place(height=20, width=120, x=10, y=270)
-
+        #Rückgelt Anzeige
         Label(frm, text='Rückgelt', foreground='black').place(height=20, width=120, x=10, y=310)
         labelreGelt =Label(frm, text='', foreground='black', bg = "LightGrey")
         labelreGelt.place(height=20, width=120, x=10, y=310)
 
 
 if __name__ == "__main__":
+    #Fenster aussehen bestimmen
     root = Tk()
     root.geometry('300x450')
     root.title('Kaffeeautomat')
@@ -237,11 +247,12 @@ if __name__ == "__main__":
     #Labels
     Label(frm, text="Kaffee Auswahl", background = 'LightBlue', foreground = 'black').place( height=20, width=100, x = 90, y = 0)
 
-    #Buttons
+    #Buttons für die Kaffes
     buttonEspresso = Button(frm, text="Espresso",command=lambda: mixKaffee("Espresso") , background = 'Tan', foreground = 'black').place( height=40, width=120, x = 20, y = 40)
     buttenEspressoMacchiato= Button(frm, text="Espresso Macchiato",command=lambda:mixKaffee("Espresso Macchaito") , background = 'Tan', foreground = 'black').place(height=40, width=120, x = 160, y = 40)
     buttonCappuccino = Button(frm, text="Cappuccino", command=lambda: mixKaffee("Cappuccino") , background = 'Tan', foreground = 'black').place(height=40, width=120, x = 20, y = 90)
     buttonCafeeLatte = Button(frm, text="Cafee Latte", command=lambda: mixKaffee("Cafee Latte") , background = 'Tan', foreground = 'black').place( height=40, width=120, x = 160, y = 90)
+    #Butten zu den Einstellungen und zum Verlassen des Programess
     buttonEinstellungen = Button(frm, text="Einstellungen" ,  background = 'LightGrey', foreground = 'black', command = einstellungen).place( height=40, width=120, x = 20, y = 360)
     Button(frm, text="Exit", command=root.destroy, background = 'LightGrey', foreground = 'black').place( height=40, width=120, x = 150, y = 360)
     root.mainloop()
