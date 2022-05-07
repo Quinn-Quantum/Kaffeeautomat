@@ -19,7 +19,7 @@
       - Zutaten auffüllen
       - Rezept hinzufügen
 
-CSV Bestand: Espresso, Michschaum, heiße Milch
+CSV Bestand: Espresso,Mange,Preis,Michschaum,Mange,Preis,heiße Milch,Menge,Preis
 CSV Kaffees: Name, Zutat1, Menge1, Zutat2, Menge2, Zutat3, Menge3, gesamt Preis
 
 ## DB - Maria -später erst mit Liste

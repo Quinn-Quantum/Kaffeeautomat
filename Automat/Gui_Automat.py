@@ -9,13 +9,8 @@ import csv
 
 def aktuellerBestand():
     # Wird in ein Objekt gespeichert zu besseren weiter Verwändung
-    bestand = Verwaltung.Bestand()
-    with open('Bestand.csv') as csvdatei:
-        readerCSV = csv.reader(csvdatei)
-        for row in readerCSV:
-            bestand.setBEspresso(int(row[1]))
-            bestand.setBMilchschaum(int(row[3]))
-            bestand.setBHeißeMilch(int(row[5]))
+    bestand = main.bestandCSVauslesen()
+
 
     bestandFenster = Tk()
     bestandFenster.geometry('200x200')
@@ -24,13 +19,13 @@ def aktuellerBestand():
     labelText= Label(master=bestandFenster, text='Bestand der Zutaten:')
     labelText.place(x=20, y=10,  height=27)
     #Label für die Bestandsauskunft
-    labelEspresso = Label(master=bestandFenster, text='Espresso: {}'.format(bestand.getBEspresso()))
+    labelEspresso = Label(master=bestandFenster, text='{}: {}'.format(bestand.getSZutat1(),bestand.getIZutat1()))
     labelEspresso.place(x=20, y=40, height=27)
 
-    labelSchaum = Label(master=bestandFenster, text='Milchschaum: {}'.format(bestand.getBMilchschaum()))
+    labelSchaum = Label(master=bestandFenster, text='{}: {}'.format(bestand.getSZutat2(),bestand.getIZutat2()))
     labelSchaum.place(x=20, y=70,  height=27)
 
-    labelMilch = Label(master=bestandFenster, text='heiße Milch: {}'.format(bestand.getBHeißeMilch()))
+    labelMilch = Label(master=bestandFenster, text='{}: {}'.format(bestand.getSZutat3(),bestand.getIZutat3()))
     labelMilch.place(x=20, y=100,  height=27)
 
     bestandFenster.mainloop()
@@ -39,15 +34,13 @@ def bestand():
     #Befüll Function
     def standert():
         #Wird in ein Objekt gespeichert zu besseren weiter Verwändung
-        bestand = Verwaltung.Bestand()
-        with open('Bestand.csv') as csvdatei:
-            readerCSV = csv.reader(csvdatei)
-            for row in readerCSV:
-                bestand.setBEspresso(int(row[1]) + 5)
-                bestand.setBMilchschaum(int(row[3]) + 5)
-                bestand.setBHeißeMilch(int(row[5]) + 5)
+        bestand = main.bestandCSVauslesen()
 
-        listeBestand = ["Espresso",bestand.getBEspresso(),"Michschaum", bestand.getBMilchschaum(), "heisse Milch",bestand.getBHeißeMilch()]
+        bestand.setIZutat1(int(bestand.getIZutat1())+5)
+        bestand.setIZutat2(int(bestand.getIZutat2()) + 5)
+        bestand.setIZutat3(int(bestand.getIZutat3()) + 5)
+
+        listeBestand = [bestand.getSZutat1(),bestand.getIZutat1(),bestand.getFZutat1(),bestand.getSZutat2(),bestand.getIZutat2(),bestand.getFZutat2(), bestand.getSZutat3(),bestand.getIZutat3(),bestand.getFZutat3()]
         file = open('Bestand.csv', 'w', newline='')
         i=0
         while file and i<1:
@@ -95,9 +88,24 @@ def addrezept():
         if menge3 == '' :
             menge3 = 0
         else:
-            int(menge1)
+            int(menge3)
+        listeZutaten = []
+        # aus Bestand.csv in eine Liste zum vergleichen mit dem Objekt
+        with open('Bestand.csv') as csvdatei:
+            reader = csv.reader(csvdatei)
+            for row in reader:
+                listeZutaten += [row]
+        preis = 0.5
+        for i in range(len(listeZutaten)):
+            for j in range(len(listeZutaten[i])):
+                if listeZutaten[i][j] == zutat1:
+                    preis =preis+(float(menge1) * float(listeZutaten[i][j+2]))
+                if listeZutaten[i][j] == zutat2:
+                    preis =preis+(float(menge2) * float(listeZutaten[i][j+2]))
+                if listeZutaten[i][j] == zutat3:
+                    preis =preis+(float(menge3) * float(listeZutaten[i][j+2]))
 
-        preis = float(entryPreis.get())
+
 
         # Verarbeitung der Daten
         listevorhandenerRezepte += [[name,zutat1,menge1,zutat2,menge2,zutat3, menge3,preis]]
@@ -106,7 +114,7 @@ def addrezept():
 
     tkFenster = Tk()
     tkFenster.title('Ergänzung')
-    tkFenster.geometry('500x500')
+    tkFenster.geometry('500x450')
     # Label für den Name
     labelName = Label(master=tkFenster, text='Name')
     labelName.place(x=10, y=10, width=100, height=27)
@@ -152,12 +160,6 @@ def addrezept():
     entryMenge3 = Entry(master=tkFenster, bg='LightSteelBlue')
     entryMenge3.place(x=350, y=160, width=100, height=27)
 
-    # Label Preis
-    labelPreis = Label(master=tkFenster, text='Preis:')
-    labelPreis.place(x=10, y=210, width=100, height=27)
-    # Entry für Preis
-    entryPreis = Entry(master=tkFenster, bg='LightSteelBlue')
-    entryPreis.place(x=150, y=210, width=100, height=27)
 
     # Button zum hinzufügen des neuen Rezeptes
     buttonBerechnen = Button(master=tkFenster, text='Hinzufügen',bg ='LightGreen' , command=buttonHinzufügen)

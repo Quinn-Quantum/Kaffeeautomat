@@ -67,47 +67,89 @@ class Kaffee:
     def setMenge3(self,menge):
         self.__menge3 = menge
 
-class Bestand:
-    __bEspresso = 0
-    __bMilchschaum = 0
-    __bHeißeMilch = 0
-    __sEspresso = ""
-    __sMilchschaum = ""
-    __sHeißeMilch = ""
 
-    def __init__(self):
-        self.__bEspresso
-        self.__bMilchschaum
-        self.__bHeißeMilch
-        self.__sEspresso = "Espresso"
-        self.__sMilchschaum = "Milchschaum"
-        self.__sHeißeMilch = "heisse Milcho"
+class Bestand:
+    __iZutat1 = 0
+    __iZutat2 = 0
+    __iZutat3 = 0
+
+    __sZutat1 = ""
+    __sZutat2 = ""
+    __sZutat3 = ""
+
+    __fZutat1 = 0.0
+    __fZutat2 = 0.0
+    __fZutat3 = 0.0
+
+    def __init__(self,sZutat1, iZutat1,fZutat1,sZutat2, iZutat2, fZutat2,sZutat3, iZutat3, fZutat3):
+        self.__sZutat1 = sZutat1
+        self.__iZutat1 = iZutat1
+        self.__fZutat1 = fZutat1
+
+        self.__sZutat2 = sZutat2
+        self.__iZutat2 = iZutat2
+        self.__fZutat2 = fZutat2
+
+        self.__sZutat3 = sZutat3
+        self.__iZutat3 = iZutat3
+        self.__fZutat3 = fZutat3
 
     # get Menge
-    def getBEspresso(self):
-        return self.__bEspresso
+    def getIZutat1(self):
+        return self.__iZutat1
 
-    def getBMilchschaum(self):
-        return self.__bMilchschaum
+    def getIZutat2(self):
+        return self.__iZutat2
 
-    def getBHeißeMilch(self):
-        return self.__bHeißeMilch
-    #get Name
-    def getSEspresso(self):
-        return self.__sEspresso
+    def getIZutat3(self):
+        return self.__iZutat3
 
-    def getSMilchschaum(self):
-        return self.__sMilchschaum
+    # get Name
+    def getSZutat1(self):
+        return self.__sZutat1
 
-    def getSHeißeMilch(self):
-        return self.__sHeißeMilch
+    def getSZutat2(self):
+        return self.__sZutat2
 
-    # set
-    def setBEspresso(self, bEspresso):
-        self.__bEspresso = bEspresso
+    def getSZutat3(self):
+        return self.__sZutat3
 
-    def setBMilchschaum(self, bMilchschaum):
-        self.__bMilchschaum = bMilchschaum
+    # get Preis
+    def getFZutat1(self):
+        return self.__fZutat1
 
-    def setBHeißeMilch(self, bHeißeMilch):
-        self.__bHeißeMilch = bHeißeMilch
+    def getFZutat2(self):
+        return self.__fZutat2
+
+    def getFZutat3(self):
+        return self.__fZutat3
+
+    # set Menge
+    def setIZutat1(self, iZutat1):
+        self.__iZutat1 = iZutat1
+
+    def setIZutat2(self, iZutat2):
+        self.__iZutat2 = iZutat2
+
+    def setIZutat3(self, iZutat3):
+        self.__iZutat3 = iZutat3
+
+    # set name
+    def setSZutat1(self, sZutat1):
+        self.__sZutat1 = sZutat1
+
+    def setSZutat2(self, sZutat2):
+        self.__sZutat2 = sZutat2
+
+    def setSZutat3(self, sZutat3):
+        self.__sZutat3 = sZutat3
+
+    # set Prreis
+    def setFZutat1(self, fZutat1):
+        self.__fZutat1 = fZutat1
+
+    def setFZutat2(self, fZutat2):
+        self.__fZutat2 = fZutat2
+
+    def setFZutat3(self, fZutat3):
+        self.__fZutat3 = fZutat3
