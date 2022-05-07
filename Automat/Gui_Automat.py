@@ -197,13 +197,13 @@ def mixKaffee(coffe):
         bezahl.title('Bezahlen')
 
 
-        labelNochzuZahlen = Label(bezahl,text = zuZahlen,bg="gray")
+        labelNochzuZahlen = Label(bezahl,text = zuZahlen,bg="LightGrey")
         labelNochzuZahlen.place( height=20, width=100, x = 90, y = 20)
 
 
-        button50Cent = Button(bezahl,text="50 cent", command=lambda: rechner(0.5), background='Tan',foreground='black').place(height=40, width=120, x=20, y=60)
-        butten1Euro = Button(bezahl,text="1€", command=lambda: rechner(1.0),background='Tan', foreground='black').place(height=40, width=120, x=160, y=60)
-        button2Euro = Button(bezahl,text="2€", command=lambda: rechner(2.0), background='Tan',foreground='black').place(height=40, width=120, x=20, y=110)
+        button50Cent = Button(bezahl,text="50 cent", command=lambda: rechner(0.5), background='DarkSeaGreen',foreground='black').place(height=40, width=120, x=20, y=60)
+        butten1Euro = Button(bezahl,text="1€", command=lambda: rechner(1.0),background='DarkSeaGreen', foreground='black').place(height=40, width=120, x=160, y=60)
+        button2Euro = Button(bezahl,text="2€", command=lambda: rechner(2.0), background='DarkSeaGreen',foreground='black').place(height=40, width=120, x=20, y=110)
 
 
     bestellung = Verwaltung.Kaffee()
@@ -222,7 +222,7 @@ def mixKaffee(coffe):
         Label(frm, text=bestellung.getZutat3(), foreground='black').place(height=20, width=120, x=10, y=270)
 
         Label(frm, text='Rückgelt', foreground='black').place(height=20, width=120, x=10, y=270)
-        labelreGelt =Label(frm, text='', foreground='black', bg = "gray")
+        labelreGelt =Label(frm, text='', foreground='black', bg = "LightGrey")
         labelreGelt.place(height=20, width=120, x=10, y=270)
 
 
