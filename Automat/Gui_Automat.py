@@ -192,7 +192,10 @@ def mixKaffee(coffe):
             #gibt es nichts mehr zu bezahlen oder es wurde zu viel bezahlt
             #geht es zum voriegen Fenster zurück und dieses wird beendet
             if nochZuZahlen <= 0:
-                labelreGelt.config(text=-nochZuZahlen)
+                if nochZuZahlen == 0:
+                    labelreGelt.config(text=nochZuZahlen)
+                else:
+                    labelreGelt.config(text=-nochZuZahlen)
                 bezahl.destroy()
             #Übergabe des Neuen noch zu zahlenden Betrages
             labelNochzuZahlen.config(text=nochZuZahlen)
