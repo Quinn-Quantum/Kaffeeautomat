@@ -13,9 +13,9 @@ def aktuellerBestand():
     with open('Bestand.csv') as csvdatei:
         readerCSV = csv.reader(csvdatei)
         for row in readerCSV:
-            bestand.setBEspresso(int(row[0]))
-            bestand.setBMilchschaum(int(row[1]))
-            bestand.setBHeißeMilch(int(row[2]))
+            bestand.setBEspresso(int(row[1]))
+            bestand.setBMilchschaum(int(row[3]))
+            bestand.setBHeißeMilch(int(row[5]))
 
     bestandFenster = Tk()
     bestandFenster.geometry('200x200')
@@ -43,11 +43,11 @@ def bestand():
         with open('Bestand.csv') as csvdatei:
             readerCSV = csv.reader(csvdatei)
             for row in readerCSV:
-                bestand.setBEspresso(int(row[0]) + 5)
-                bestand.setBMilchschaum(int(row[1]) + 5)
-                bestand.setBHeißeMilch(int(row[2]) + 5)
+                bestand.setBEspresso(int(row[1]) + 5)
+                bestand.setBMilchschaum(int(row[3]) + 5)
+                bestand.setBHeißeMilch(int(row[5]) + 5)
 
-        listeBestand = [bestand.getBEspresso(), bestand.getBMilchschaum(), bestand.getBHeißeMilch()]
+        listeBestand = ["Espresso",bestand.getBEspresso(),"Michschaum", bestand.getBMilchschaum(), "heisse Milch",bestand.getBHeißeMilch()]
         file = open('Bestand.csv', 'w', newline='')
         i=0
         while file and i<1:
@@ -179,12 +179,51 @@ def einstellungen():
 
     master1.mainloop()
 
+
+
 def mixKaffee(coffe):
-    print(coffe)
+
+    def bezahle(zuZahlen):
+        def rechner(betrag):
+            nochZuZahlen = float(labelNochzuZahlen.cget("text"))
+            nochZuZahlen = nochZuZahlen -betrag
+            if nochZuZahlen <= 0:
+                labelreGelt.config(text=-nochZuZahlen)
+                bezahl.destroy()
+            labelNochzuZahlen.config(text=nochZuZahlen)
+
+        bezahl = Tk()
+        bezahl.geometry('300x400')
+        bezahl.title('Bezahlen')
+
+
+        labelNochzuZahlen = Label(bezahl,text = zuZahlen,bg="gray")
+        labelNochzuZahlen.place( height=20, width=100, x = 90, y = 20)
+
+
+        button50Cent = Button(bezahl,text="50 cent", command=lambda: rechner(0.5), background='Tan',foreground='black').place(height=40, width=120, x=20, y=60)
+        butten1Euro = Button(bezahl,text="1€", command=lambda: rechner(1.0),background='Tan', foreground='black').place(height=40, width=120, x=160, y=60)
+        button2Euro = Button(bezahl,text="2€", command=lambda: rechner(2.0), background='Tan',foreground='black').place(height=40, width=120, x=20, y=110)
+
+
     bestellung = Verwaltung.Kaffee()
     bestellung = main.makecaffe(coffe)
+    allesda = main.bestandstests(bestellung)
 
-    Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=100, x=10, y=150)
+    if allesda == False:
+        bestand()
+    else:
+        reGelt = bezahle(bestellung.getPreis())
+
+        Label(frm, text=bestellung.getName(), foreground='black').place(height=20, width=120, x=10, y=150)
+        Label(frm, text = "Zutaten:").place(height=20, width=100, x=10, y=180)
+        Label(frm, text=bestellung.getZutat1(), foreground='black').place(height=20, width=120, x=10, y=210)
+        Label(frm, text=bestellung.getZutat2(), foreground='black').place(height=20, width=120, x=10, y=240)
+        Label(frm, text=bestellung.getZutat3(), foreground='black').place(height=20, width=120, x=10, y=270)
+
+        Label(frm, text='Rückgelt', foreground='black').place(height=20, width=120, x=10, y=270)
+        labelreGelt =Label(frm, text='', foreground='black', bg = "gray")
+        labelreGelt.place(height=20, width=120, x=10, y=270)
 
 
 if __name__ == "__main__":
@@ -198,9 +237,9 @@ if __name__ == "__main__":
 
     #Buttons
     buttonEspresso = Button(frm, text="Espresso",command=lambda: mixKaffee("Espresso") , background = 'Tan', foreground = 'black').place( height=40, width=120, x = 20, y = 40)
-    buttonEspressoMachiarto = Button(frm, text="Espresso Machiarto", command=lambda: mixKaffee("Espresso Machiarto"), background = 'Tan', foreground = 'black').place(height=40, width=120, x = 160, y = 40)
+    buttenEspressoMacchiato= Button(frm, text="Espresso Macchiato",command=lambda:mixKaffee("Espresso Macchaito") , background = 'Tan', foreground = 'black').place(height=40, width=120, x = 160, y = 40)
     buttonCappuccino = Button(frm, text="Cappuccino", command=lambda: mixKaffee("Cappuccino") , background = 'Tan', foreground = 'black').place(height=40, width=120, x = 20, y = 90)
     buttonCafeeLatte = Button(frm, text="Cafee Latte", command=lambda: mixKaffee("Cafee Latte") , background = 'Tan', foreground = 'black').place( height=40, width=120, x = 160, y = 90)
-    buttonEinstellungen = Button(frm, text="Einstellungen" ,  background = 'LightGrey', foreground = 'black', command = einstellungen).place( height=40, width=120, x = 20, y = 300)
-    Button(frm, text="Exit", command=root.destroy, background = 'LightGrey', foreground = 'black').place( height=40, width=120, x = 150, y = 300)
+    buttonEinstellungen = Button(frm, text="Einstellungen" ,  background = 'LightGrey', foreground = 'black', command = einstellungen).place( height=40, width=120, x = 20, y = 320)
+    Button(frm, text="Exit", command=root.destroy, background = 'LightGrey', foreground = 'black').place( height=40, width=120, x = 150, y = 320)
     root.mainloop()

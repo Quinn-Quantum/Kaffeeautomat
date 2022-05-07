@@ -37,3 +37,24 @@ def makecaffe(name):
             return caffe
 
 
+def bestandstests(objektKaffee):
+    listeZutaten = []
+    bMengenangabe = True
+    with open('Bestand.csv') as csvdatei:
+        reader = csv.reader(csvdatei)
+        for row in reader:
+            listeZutaten += [row]
+
+    for i in range(len(listeZutaten)):
+        for j in range(len(listeZutaten[i])):
+            if listeZutaten[i][j] == objektKaffee.getZutat1():
+                if listeZutaten[i][j+1] < objektKaffee.getMenge1():
+                    bMengenangabe = False
+            if listeZutaten[i][j]  == objektKaffee.getZutat2():
+                if listeZutaten[i][j+1] < objektKaffee.getMenge2():
+                    bMengenangabe = False
+            if listeZutaten[i][j] == objektKaffee.getZutat3():
+                if listeZutaten[i][j+1] < objektKaffee.getMenge3():
+                    bMengenangabe = False
+    return bMengenangabe
+

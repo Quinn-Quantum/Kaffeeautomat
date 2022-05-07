@@ -71,13 +71,19 @@ class Bestand:
     __bEspresso = 0
     __bMilchschaum = 0
     __bHeißeMilch = 0
+    __sEspresso = ""
+    __sMilchschaum = ""
+    __sHeißeMilch = ""
 
     def __init__(self):
         self.__bEspresso
         self.__bMilchschaum
         self.__bHeißeMilch
+        self.__sEspresso = "Espresso"
+        self.__sMilchschaum = "Michschaum"
+        self.__sHeißeMilch = "heisse Milcho"
 
-    # get
+    # get Menge
     def getBEspresso(self):
         return self.__bEspresso
 
@@ -86,6 +92,15 @@ class Bestand:
 
     def getBHeißeMilch(self):
         return self.__bHeißeMilch
+    #get Name
+    def getSEspresso(self):
+        return self.__sEspresso
+
+    def getSMilchschaum(self):
+        return self.__sMilchschaum
+
+    def getSHeißeMilch(self):
+        return self.__sHeißeMilch
 
     # set
     def setBEspresso(self, bEspresso):
