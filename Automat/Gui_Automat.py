@@ -221,14 +221,14 @@ def mixKaffee(coffe):
         Label(frm, text=bestellung.getZutat2(), foreground='black').place(height=20, width=120, x=10, y=240)
         Label(frm, text=bestellung.getZutat3(), foreground='black').place(height=20, width=120, x=10, y=270)
 
-        Label(frm, text='Rückgelt', foreground='black').place(height=20, width=120, x=10, y=270)
+        Label(frm, text='Rückgelt', foreground='black').place(height=20, width=120, x=10, y=310)
         labelreGelt =Label(frm, text='', foreground='black', bg = "LightGrey")
-        labelreGelt.place(height=20, width=120, x=10, y=270)
+        labelreGelt.place(height=20, width=120, x=10, y=310)
 
 
 if __name__ == "__main__":
     root = Tk()
-    root.geometry('300x400')
+    root.geometry('300x450')
     root.title('Kaffeeautomat')
     frm = ttk.Frame(root, padding=20).pack()
 
@@ -240,6 +240,6 @@ if __name__ == "__main__":
     buttenEspressoMacchiato= Button(frm, text="Espresso Macchiato",command=lambda:mixKaffee("Espresso Macchaito") , background = 'Tan', foreground = 'black').place(height=40, width=120, x = 160, y = 40)
     buttonCappuccino = Button(frm, text="Cappuccino", command=lambda: mixKaffee("Cappuccino") , background = 'Tan', foreground = 'black').place(height=40, width=120, x = 20, y = 90)
     buttonCafeeLatte = Button(frm, text="Cafee Latte", command=lambda: mixKaffee("Cafee Latte") , background = 'Tan', foreground = 'black').place( height=40, width=120, x = 160, y = 90)
-    buttonEinstellungen = Button(frm, text="Einstellungen" ,  background = 'LightGrey', foreground = 'black', command = einstellungen).place( height=40, width=120, x = 20, y = 320)
-    Button(frm, text="Exit", command=root.destroy, background = 'LightGrey', foreground = 'black').place( height=40, width=120, x = 150, y = 320)
+    buttonEinstellungen = Button(frm, text="Einstellungen" ,  background = 'LightGrey', foreground = 'black', command = einstellungen).place( height=40, width=120, x = 20, y = 360)
+    Button(frm, text="Exit", command=root.destroy, background = 'LightGrey', foreground = 'black').place( height=40, width=120, x = 150, y = 360)
     root.mainloop()

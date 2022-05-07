@@ -37,9 +37,12 @@ def makecaffe(name):
             return caffe
 
 
+
+
 def bestandstests(objektKaffee):
     listeZutaten = []
     bMengenangabe = True
+    #aus Bestand.csv in eine Liste zum vergleichen mit dem Objekt
     with open('Bestand.csv') as csvdatei:
         reader = csv.reader(csvdatei)
         for row in reader:
@@ -47,14 +50,36 @@ def bestandstests(objektKaffee):
 
     for i in range(len(listeZutaten)):
         for j in range(len(listeZutaten[i])):
+            #Test ob die Zuteten mit den Mengen und Zuteten in der Liste übereinstimmen
             if listeZutaten[i][j] == objektKaffee.getZutat1():
                 if listeZutaten[i][j+1] < objektKaffee.getMenge1():
                     bMengenangabe = False
-            if listeZutaten[i][j]  == objektKaffee.getZutat2():
+                    return bMengenangabe
+                else:
+                    listeZutaten[i][j + 1]= int(listeZutaten[i][j + 1]) - int(objektKaffee.getMenge1())
+
+            elif listeZutaten[i][j]  == objektKaffee.getZutat2():
                 if listeZutaten[i][j+1] < objektKaffee.getMenge2():
                     bMengenangabe = False
-            if listeZutaten[i][j] == objektKaffee.getZutat3():
+                    return bMengenangabe
+                else:
+                    listeZutaten[i][j + 1] = int(listeZutaten[i][j + 1]) - int(objektKaffee.getMenge2())
+
+            elif listeZutaten[i][j] == objektKaffee.getZutat3():
                 if listeZutaten[i][j+1] < objektKaffee.getMenge3():
                     bMengenangabe = False
+                    return bMengenangabe
+                else:
+                    listeZutaten[i][j + 1]= int(listeZutaten[i][j + 1]) - int(objektKaffee.getMenge3())
+    #veränderte Liste wieder in CSV schreiben
+    file =open('Bestand.csv','w',newline='')
+    with file :
+        writer = csv.writer(file)
+        for row in listeZutaten:
+            writer.writerow(row)
+
+
+
+
     return bMengenangabe
 

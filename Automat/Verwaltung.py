@@ -80,7 +80,7 @@ class Bestand:
         self.__bMilchschaum
         self.__bHeißeMilch
         self.__sEspresso = "Espresso"
-        self.__sMilchschaum = "Michschaum"
+        self.__sMilchschaum = "Milchschaum"
         self.__sHeißeMilch = "heisse Milcho"
 
     # get Menge
