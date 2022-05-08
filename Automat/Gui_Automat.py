@@ -237,15 +237,24 @@ def mixKaffee(coffe):
         labelreGelt =Label(frm, text='', foreground='black', bg = "LightGrey")
         labelreGelt.place(height=20, width=120, x=100, y=310)
 
+def gifStart():
+    counter = 0
+    while counter < 20:
+
+        image = PhotoImage(file='aradoL.gif', format="gif -index " +str(counter))
+        labelGif.config(image = image)
+        root.update()
+        counter += 1
+
 if __name__ == "__main__":
     #Fenster aussehen bestimmen
     root = Tk()
-    root.geometry('300x450')
+    root.geometry('400x700')
     root.title('Kaffeeautomat')
     frm = ttk.Frame(root, padding=20).pack()
 
     #Label
-    Label(frm, text="Kaffee Auswahl", background = 'LightBlue', foreground = 'black').place( height=20, width=100, x = 90, y = 0)
+    labelAuswahl=Label(frm, text="Kaffee Auswahl", background = 'LightBlue', foreground = 'black').place( height=20, width=100, x = 90, y = 0)
 
     #Buttons für die Kaffes
     buttonEspresso = Button(frm, text="Espresso",command=lambda: mixKaffee("Espresso") , background = 'Tan', foreground = 'black').place( height=40, width=120, x = 20, y = 40)
@@ -255,4 +264,7 @@ if __name__ == "__main__":
     #Butten zu den Einstellungen und zum Verlassen des Programess
     buttonEinstellungen = Button(frm, text="Einstellungen" ,  background = 'LightGrey', foreground = 'black', command = einstellungen).place( height=40, width=120, x = 20, y = 360)
     Button(frm, text="Exit", command=root.destroy, background = 'LightGrey', foreground = 'black').place( height=40, width=120, x = 150, y = 360)
+    buttonTrittDenKaffeeautomaten = Button(frm, text="Tritt",command=gifStart ,background='LightGrey', foreground='black',).place(height=40, width=120, x=20, y=450)
+    labelGif = Label()
+    labelGif.place(x = 20, y =490)
     root.mainloop()
