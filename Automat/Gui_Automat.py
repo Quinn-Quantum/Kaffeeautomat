@@ -233,9 +233,9 @@ def mixKaffee(coffe):
         Label(frm, text=bestellung.getZutat2(), foreground='black').place(height=20, width=120, x=10, y=240)
         Label(frm, text=bestellung.getZutat3(), foreground='black').place(height=20, width=120, x=10, y=270)
         #Rückgelt Anzeige
-        Label(frm, text='Rückgelt', foreground='black').place(height=20, width=120, x=10, y=310)
+        Label(frm, text='Rückgelt:', foreground='black').place(height=20, width=120, x=10, y=310)
         labelreGelt =Label(frm, text='', foreground='black', bg = "LightGrey")
-        labelreGelt.place(height=20, width=120, x=10, y=310)
+        labelreGelt.place(height=20, width=120, x=100, y=310)
 
 if __name__ == "__main__":
     #Fenster aussehen bestimmen
