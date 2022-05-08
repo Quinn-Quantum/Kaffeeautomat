@@ -240,7 +240,6 @@ def mixKaffee(coffe):
 def gifStart():
     counter = 0
     while counter < 20:
-
         image = PhotoImage(file='aradoL.gif', format="gif -index " +str(counter))
         labelGif.config(image = image)
         root.update()
