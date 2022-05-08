@@ -21,7 +21,6 @@ def saveListe(listeKaffees):
             writerCSV.writerow(row)
         return True
 
-
 #Kaffee wird ausgelesen und in seine Bestandteile zerlägt
 def makecaffe(name):
     listekaffes = listecaffees()

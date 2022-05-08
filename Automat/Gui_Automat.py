@@ -4,13 +4,11 @@ import main
 import Verwaltung
 import csv
 
-
 #Butten Funktionen
 
 def aktuellerBestand():
     # Wird in ein Objekt gespeichert zu besseren weiter Verwändung
     bestand = main.bestandCSVauslesen()
-
 
     bestandFenster = Tk()
     bestandFenster.geometry('200x200')
@@ -47,7 +45,6 @@ def bestand():
             writerCSV = csv.writer(file)
             writerCSV.writerow(listeBestand)
             i=1
-
 
     master = Tk()
     master.geometry('200x200')
@@ -166,6 +163,7 @@ def addrezept():
     buttonBerechnen.place(x=50, y=300, width=100, height=27)
     # Aktivierung des Fensters
     tkFenster.mainloop()
+
 #Function: Settings
 def einstellungen():
     master1 = Tk()
@@ -239,7 +237,6 @@ def mixKaffee(coffe):
         labelreGelt =Label(frm, text='', foreground='black', bg = "LightGrey")
         labelreGelt.place(height=20, width=120, x=10, y=310)
 
-
 if __name__ == "__main__":
     #Fenster aussehen bestimmen
     root = Tk()
@@ -247,7 +244,7 @@ if __name__ == "__main__":
     root.title('Kaffeeautomat')
     frm = ttk.Frame(root, padding=20).pack()
 
-    #Labels
+    #Label
     Label(frm, text="Kaffee Auswahl", background = 'LightBlue', foreground = 'black').place( height=20, width=100, x = 90, y = 0)
 
     #Buttons für die Kaffes
