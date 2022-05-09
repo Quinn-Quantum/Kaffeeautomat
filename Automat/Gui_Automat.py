@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-import main
+import Function
 import Verwaltung
 import csv
 
@@ -8,7 +8,7 @@ import csv
 
 def aktuellerBestand():
     # Wird in ein Objekt gespeichert zu besseren weiter Verwändung
-    bestand = main.bestandCSVauslesen()
+    bestand = Function.bestandCSVauslesen()
 
     bestandFenster = Tk()
     bestandFenster.geometry('200x200')
@@ -32,7 +32,7 @@ def bestand():
     #Befüll Function
     def standert():
         #Wird in ein Objekt gespeichert zu besseren weiter Verwändung
-        bestand = main.bestandCSVauslesen()
+        bestand = Function.bestandCSVauslesen()
         #Jede Zutat wird um 5 erhöht
         bestand.setIZutat1(int(bestand.getIZutat1())+5)
         bestand.setIZutat2(int(bestand.getIZutat2()) + 5)
@@ -60,7 +60,7 @@ def bestand():
 
 def addrezept():
     def buttonHinzufügen():
-        listevorhandenerRezepte = main.listecaffees()
+        listevorhandenerRezepte = Function.listecaffees()
         # Übernahme der Daten
         name = str(entryName.get())
 
@@ -106,7 +106,7 @@ def addrezept():
 
         # Verarbeitung der Daten
         listevorhandenerRezepte += [[name,zutat1,menge1,zutat2,menge2,zutat3, menge3,preis]]
-        boolVariable=main.saveListe(listevorhandenerRezepte)
+        boolVariable=Function.saveListe(listevorhandenerRezepte)
         tkFenster.destroy()
 
     tkFenster = Tk()
@@ -215,9 +215,9 @@ def mixKaffee(coffe):
     #Objekt Kaffee wird erzeugt
     bestellung = Verwaltung.Kaffee()
     #Objekt kaffe wird mit der Befüllfunktion makecaffe gefüllt, ihr wird einString mit den Namen des Getränkes übergeben
-    bestellung = main.makecaffe(coffe)
+    bestellung = Function.makecaffe(coffe)
     #Überprüfen ob alle notwendigen Zutaten in ihrer Menge da sind
-    allesda = main.bestandstests(bestellung)
+    allesda = Function.bestandstests(bestellung)
 
     if allesda == False:
         #Wenn Fals muss erst der Bestand aufgefühlt werden
@@ -248,7 +248,7 @@ def gifStart():
 if __name__ == "__main__":
     #Fenster aussehen bestimmen
     root = Tk()
-    root.geometry('400x700')
+    root.geometry('380x700')
     root.title('Kaffeeautomat')
     frm = ttk.Frame(root, padding=20).pack()
 
